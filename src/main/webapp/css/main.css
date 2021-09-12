@@ -2,6 +2,9 @@
     --singup-button: #5c636a;
     --login-button: #157347;
     --return-button: #5c636a;
+    --blue: #0d6efd;
+    --red: #dc3545;
+    --border-color: #DADCE0;
 }
 
 body {
@@ -20,12 +23,17 @@ h1 {
 }
 
 h2 {
-    font-size: 25px;
+    font-size: 20px;
+    margin-bottom: 25px;
     font-weight: normal;
+    text-align: center;
 }
 
 form p {
-    margin: 5px 0px;
+    margin: 10px 0px;
+}
+form span {
+    margin: 10px 0px;
 }
 
 form input[type="email"], input[type="password"], input[type="text"]  {
@@ -35,15 +43,20 @@ form input[type="email"], input[type="password"], input[type="text"]  {
     font-size: 15px;
 }
 
-form button {
+button {
     border: transparent;
     border-radius: 4px;
-    padding: 10px;
+    padding: 12px;
     color: #FFF;
 }
 
-form button:hover {
+button:hover {
     cursor: pointer;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: var(--blue);
 }
 
 .login-button {
@@ -65,8 +78,7 @@ form button:hover {
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: 1px solid #DADCE0;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 30px;
     width: 500px;
@@ -81,4 +93,20 @@ form button:hover {
 
 .show-password {
     margin: 20px 0px;
+}
+
+.center-text {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.password-div, .email-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+#password-error, #email-error {
+    font-size: 12px;
+    color: var(--red);
 }

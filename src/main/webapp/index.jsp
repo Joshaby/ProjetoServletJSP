@@ -17,18 +17,26 @@
             <h1>Sistema de cadastro de contatos - SCC</h1>
             <h2>Fazer login</h2>
             <form action="/login" method="post">
-                <p>Email</p>
-                <input id="email" type="email" name="email" />
-                <p>Senha</p>
-                <input id="senha" type="password" name="senha" />
+                <div class="email-div">
+                    <span>Email</span>
+                    <span id="email-error"></span>
+                </div>
+                <input id="email" type="email" name="email" oninput="validateEmail()" onblur="validateEmail()"/>
+                <div class="password-div">
+                    <span>Senha</span>
+                    <span id="password-error"></span>
+                </div>
+                <input id="senha" type="password" name="senha" oninput="validatePassword()" onblur="validatePassword()"/>
+                <p><a href="/forgot.jsp">Esqueceu sua senha?</a></p>
                 <p class="show-password">Mostrar senha <input class="checkbox" type="checkbox" onclick="changeVisibility()"></p>
                 <div class="div-buttons">
                     <button class="login-button" type="submit">Entrar</button>
-                    <a href="/signup.jsp"><button class="signup-button" type="button">Registra-se</button></a>
+                    <a href="/signup.jsp"><button class="signup-button" type="button">Resgistrar-se</button></a>
                 </div>
             </form>
         </div>
     </main>
     <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>
