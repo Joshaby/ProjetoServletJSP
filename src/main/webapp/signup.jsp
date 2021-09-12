@@ -14,7 +14,8 @@
 <body>
     <main>
         <div class="main-div container">
-            <h1>Sistema de cadastro de contatos - SCC</h1>
+            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+            <hr>
             <h2>Registro de novo usuário</h2>
             <form action="/signup" method="post">
                 <p>Nome</p>

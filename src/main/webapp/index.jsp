@@ -14,8 +14,9 @@
 <body>
     <main>
         <div class="main-div container">
-            <h1>Sistema de cadastro de contatos - SCC</h1>
-            <h2>Fazer login</h2>
+            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+            <hr>
+            <h2 class="center-text">Fazer login</h2>
             <form action="/login" method="post">
                 <div class="email-div">
                     <span>Email</span>

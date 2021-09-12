@@ -10,16 +10,14 @@
     <html lang="pt-br">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Email não encontrado!</title>
+    <title>Senha incorreta!</title>
 <body>
     <main>
         <div class="main-div container1">
             <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
             <hr>
-            <p class="center-text">Email: ${email} não encontrado!</p>
-            <p class="center-text">Se cadastre no sistema para continuar!</p>
+            <p class="center-text">Senha incorreta!</p>
             <div class="div-buttons1">
-                <button class="login-button">Resgistrar-se</button>
                 <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
             </div>
         </div>

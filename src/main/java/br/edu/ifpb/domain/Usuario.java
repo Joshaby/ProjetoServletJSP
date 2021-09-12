@@ -11,22 +11,24 @@ import java.util.Set;
 @Setter
 public class Usuario {
 
-    private Integer id;
     private String nome;
     private String email;
     private String senha;
     private Set<Contato> contatos = new HashSet<>();
 
-    public Usuario(Integer id, String nome, String email, String senha) {
-        this.id = id;
+    public Usuario(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
     }
 
+    public boolean addContato(Contato contato) {
+        return contatos.add(contato);
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(getEmail());
     }
 
     @Override
@@ -34,6 +36,6 @@ public class Usuario {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Usuario other = (Usuario) obj;
-        return Objects.equals(getId(), other.getId());
+        return Objects.equals(getEmail(), other.getEmail());
     }
 }

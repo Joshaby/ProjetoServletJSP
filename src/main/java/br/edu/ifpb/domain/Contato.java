@@ -11,7 +11,6 @@ import java.util.Set;
 @Setter
 public class Contato {
 
-    private Integer id;
     private String nome;
     private Integer rg;
     private Integer cpf;
@@ -26,7 +25,7 @@ public class Contato {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hashCode(getCpf());
     }
 
     @Override
@@ -34,6 +33,6 @@ public class Contato {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Contato other = (Contato) obj;
-        return Objects.equals(getId(), other.getId());
+        return Objects.equals(getCpf(), other.getCpf());
     }
 }

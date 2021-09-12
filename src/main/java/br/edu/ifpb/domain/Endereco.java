@@ -11,7 +11,6 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Endereco {
 
-    private Integer id;
     private String rua;
     private Integer numero;
     private String complemento;
@@ -22,14 +21,14 @@ public class Endereco {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+        return Objects.hash(numero, cep);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Endereco other = (Endereco) obj;
-        return Objects.equals(getId(), other.getId());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Endereco endereco = (Endereco) o;
+        return numero.equals(endereco.numero) && cep.equals(endereco.cep);
     }
 }

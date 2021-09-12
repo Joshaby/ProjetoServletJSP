@@ -1,14 +1,17 @@
 :root {
-    --singup-button: #5c636a;
-    --login-button: #157347;
-    --return-button: #5c636a;
+    --grey: #5c636a;
+    --green: #157347;
     --blue: #0d6efd;
     --red: #dc3545;
+    --black: #1c1f23;
     --border-color: #DADCE0;
 }
 
 body {
     font-family: sans-serif;
+}
+
+main {
     position: absolute;
     position: fixed;
     top: 50%;
@@ -17,16 +20,22 @@ body {
     transform: translate(-50%, -50%);
 }
 
-h1 {
+main h1 {
     font-size: 35px;
-    text-align: center;
 }
 
-h2 {
+main h2 {
     font-size: 20px;
     margin-bottom: 25px;
     font-weight: normal;
-    text-align: center;
+}
+
+hr {
+    border-width: 0px;
+    height: 1px;
+    width: 500px;
+    color: var(--border-color);
+    background-color: var(--border-color);
 }
 
 form p {
@@ -45,8 +54,8 @@ form input[type="email"], input[type="password"], input[type="text"]  {
 
 button {
     border: transparent;
-    border-radius: 4px;
-    padding: 12px;
+    border-radius: 5px;
+    padding: 10px;
     color: #FFF;
 }
 
@@ -60,28 +69,51 @@ a, a:visited {
 }
 
 .login-button {
-    background-color: var(--login-button);
+    background-color: var(--green);
 }
 
 .signup-button {
-    background-color: var(--singup-button);
+    background-color: var(--grey);
 }
 
 .return-button {
-    background-color: var(--return-button);
+    background-color: var(--grey);
+}
+
+.edit-button {
+    background-color: var(--green);
+}
+
+.show-button {
+    background-color: var(--blue);
+}
+
+.remove-button {
+    background-color: var(--red);
 }
 
 .main-div {
-    margin: 30px;
+    margin: 60px;
 }
 
 .container {
+    align-items: center;
+}
+
+.container, .container1 {
+    width: 550px;
+}
+
+.container, .container1, .container-contacts  {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 30px;
-    width: 500px;
+}
+
+.container-contacts {
+    width: 850px;
 }
 
 .div-buttons {
@@ -89,6 +121,14 @@ a, a:visited {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+.div-buttons1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 25px;
 }
 
 .show-password {
@@ -100,12 +140,55 @@ a, a:visited {
     margin-bottom: 40px;
 }
 
+.exit-button {
+    background-color: var(--blue);
+}
+
+.add-button {
+    background-color: var(--black);
+}
+
 .password-div, .email-div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
+
+.nav-div {
+    margin: 5px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-div, .contacts-div, .title-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contacts-div {
+    margin: 5px 0px;
+    padding: 5px;
+}
+
+.username {
+    margin-right: 5px;
+}
+
+.title-contacts {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.container-contacts hr {
+    width: 850px;
+}
+
+.end-text {
+    text-align: end;
+}
+
 #password-error, #email-error {
     font-size: 12px;
     color: var(--red);

@@ -1,5 +1,6 @@
 package br.edu.ifpb.servlet;
 
+import br.edu.ifpb.domain.Usuario;
 import br.edu.ifpb.repository.UsuarioRepository;
 
 import javax.servlet.RequestDispatcher;
@@ -22,13 +23,23 @@ public class LoginServlet extends HttpServlet {
         String senha = request.getParameter("senha");
         System.out.println(email + ' ' + senha);
         UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
-        if (Objects.nonNull(usuarioRepository.findByEmail(email))) {
-
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        RequestDispatcher requestDispatcher = null;
+        if (Objects.nonNull(usuario)) {
+            if (usuario.getSenha().equals(senha)) {
+                request.setAttribute("email", email);
+                request.setAttribute("nome", usuario.getNome());
+                request.setAttribute("contatos", usuario.getContatos());
+                requestDispatcher = request.getRequestDispatcher("/home.jsp");
+            }
+            else {
+                requestDispatcher = request.getRequestDispatcher("/invalidpassword.jsp");
+            }
         }
         else {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/invalidemail.jsp");
+            requestDispatcher = request.getRequestDispatcher("/invalidemail.jsp");
             request.setAttribute("email", email);
-            requestDispatcher.forward(request, response);
         }
+        requestDispatcher.forward(request, response);
     }
 }
