@@ -1,0 +1,46 @@
+:root {
+    --singup-button: #6c757d;
+    --login-button: #0d6efd;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: normal;
+}
+
+form p {
+    margin: 0px;
+}
+
+form input {
+    margin: 10px 0px;
+    height: 30px;
+    width: 500px;
+}
+
+form button {
+    border: transparent;
+    border-radius: 4px;
+    padding: 10px;
+    color: #FFF;
+}
+
+form button:hover {
+    cursor: pointer;
+}
+
+.login-button {
+    background-color: var(--login-button);
+}
+
+.signup-button {
+    background-color: var(--singup-button);
+}
+
+.main-div {
+    margin: 30px;
+}

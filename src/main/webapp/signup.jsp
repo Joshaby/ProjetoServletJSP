@@ -10,19 +10,20 @@
 <html lang="pt-br">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Entrar</title>
+    <title>Registrar</title>
 <body>
     <main>
         <div class="main-div">
-            <h1>Entrar</h1>
-            <form action="/login" method="post">
+            <h1>Registro de novo usuário</h1>
+            <form action="/signup" method="post">
+                <p>Nome</p>
+                <input type="text" name="nome"/>
                 <p>Email</p>
-                <input type="email" name="email" />
+                <input type="email" name="email"/>
                 <p>Senha</p>
-                <input type="password" name="senha" />
+                <input type="password" name="senha"/>
                 <div>
                     <button class="login-button" type="submit">Entrar</button>
-                    <a href="/signup.jsp"><button class="signup-button" type="button">Registra-se</button></a>
                 </div>
             </form>
         </div>
