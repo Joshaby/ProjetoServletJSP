@@ -16,6 +16,11 @@ body {
 
 h1 {
     font-size: 35px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 25px;
     font-weight: normal;
 }
 
@@ -27,7 +32,7 @@ form input[type="email"], input[type="password"], input[type="text"]  {
     margin: 10px 0px;
     height: 30px;
     width: 500px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 form button {
@@ -63,9 +68,8 @@ form button:hover {
     align-items: center;
     border: 1px solid #DADCE0;
     border-radius: 4px;
-    padding: 20px;
+    padding: 30px;
     width: 500px;
-    margin: auto;
 }
 
 .div-buttons {
