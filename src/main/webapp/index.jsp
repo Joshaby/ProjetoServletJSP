@@ -13,19 +13,21 @@
     <title>Entrar</title>
 <body>
     <main>
-        <div class="main-div">
-            <h1>Entrar</h1>
+        <div class="main-div container">
+            <h1>Fazer login</h1>
             <form action="/login" method="post">
                 <p>Email</p>
-                <input type="email" name="email" />
+                <input id="email" type="email" name="email" />
                 <p>Senha</p>
-                <input type="password" name="senha" />
-                <div>
+                <input id="senha" type="password" name="senha" />
+                <p class="show-password">Mostrar senha <input class="checkbox" type="checkbox" onclick="changeVisibility()"></p>
+                <div class="div-buttons">
                     <button class="login-button" type="submit">Entrar</button>
                     <a href="/signup.jsp"><button class="signup-button" type="button">Registra-se</button></a>
                 </div>
             </form>
         </div>
     </main>
+    <script src="js/main.js"></script>
 </body>
 </html>

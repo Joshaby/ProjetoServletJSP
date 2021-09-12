@@ -13,20 +13,23 @@
     <title>Registrar</title>
 <body>
     <main>
-        <div class="main-div">
+        <div class="main-div container">
             <h1>Registro de novo usuário</h1>
             <form action="/signup" method="post">
                 <p>Nome</p>
-                <input type="text" name="nome"/>
+                <input id="nome" class="entry" type="text" name="nome"/>
                 <p>Email</p>
-                <input type="email" name="email"/>
+                <input id="email" class="entry" type="email" name="email"/>
                 <p>Senha</p>
-                <input type="password" name="senha"/>
-                <div>
+                <input id="senha" class="entry" type="password" name="senha"/>
+                <p class="show-password">Mostrar senha <input class="checkbox" type="checkbox" onclick="changeVisibility()"></p>
+                <div class="div-buttons">
                     <button class="login-button" type="submit">Entrar</button>
+                    <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
                 </div>
             </form>
         </div>
     </main>
+    <script src="js/main.js"></script>
 </body>
 </html>
