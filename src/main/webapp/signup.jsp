@@ -18,12 +18,21 @@
             <hr>
             <h2>Registro de novo usuário</h2>
             <form action="/signup" method="post">
-                <p>Nome</p>
-                <input id="nome" class="entry" type="text" name="nome"/>
-                <p>Email</p>
-                <input id="email" class="entry" type="email" name="email"/>
-                <p>Senha</p>
-                <input id="senha" class="entry" type="password" name="senha"/>
+                <div class="nome-div">
+                    <span>Nome</span>
+                    <span id="username-error"></span>
+                </div>
+                <input id="nome" class="entry" type="text" name="nome" oninput="validateUserName()" onblur="validateUserName()"/>
+                <div class="email-div">
+                    <span>Email</span>
+                    <span id="email-error"></span>
+                </div>
+                <input id="email" class="entry" type="email" name="email" oninput="validateEmail()" onblur="validateEmail()"/>
+                <div class="password-div">
+                    <span>Senha</span>
+                    <span id="password-error"></span>
+                </div>
+                <input id="senha" class="entry" type="password" name="senha" oninput="validatePassword()" onblur="validatePassword()"/>
                 <p class="show-password">Mostrar senha <input class="checkbox" type="checkbox" onclick="changeVisibility()"></p>
                 <div class="div-buttons">
                     <button class="login-button" type="submit">Entrar</button>
@@ -33,5 +42,6 @@
         </div>
     </main>
     <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>

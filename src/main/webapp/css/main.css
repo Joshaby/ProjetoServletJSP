@@ -148,7 +148,7 @@ a, a:visited {
     background-color: var(--black);
 }
 
-.password-div, .email-div {
+.password-div, .email-div, .nome-div {
     display: flex;
     flex-direction: row;
     align-items: center;

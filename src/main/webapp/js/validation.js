@@ -11,3 +11,10 @@ function validateEmail() {
     if (password.value.length == 0) error.innerHTML = "Campo obrigatório";
     else error.innerHTML = "";
 }
+
+function validateUserName() {
+    const password = document.getElementById("nome");
+    const error = document.getElementById("username-error");
+    if (password.value.length == 0) error.innerHTML = "Campo obrigatório";
+    else error.innerHTML = "";
+}
