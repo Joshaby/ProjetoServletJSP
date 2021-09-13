@@ -8,16 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Entrar</title>
+</head>
 <body>
     <main>
         <div class="main-div container">
             <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
             <hr>
             <h2 class="center-text">Fazer login</h2>
-            <form action="/login" method="post">
+            <form action="/login" method="post" accept-charset="UTF-8">
                 <div class="email-div">
                     <span>Email</span>
                     <span id="email-error"></span>

@@ -7,10 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-    <html lang="pt-br">
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Email não encontrado!</title>
+    <title>Email não encontrado</title>
+</head>
 <body>
     <main>
         <div class="main-div container1">
@@ -18,7 +20,7 @@
             <hr>
             <p class="center-text">Email: ${email} não encontrado!</p>
             <p class="center-text">Se cadastre no sistema para continuar!</p>
-            <div class="div-buttons1">
+            <div class="div-buttons">
                 <button class="login-button">Resgistrar-se</button>
                 <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
             </div>
