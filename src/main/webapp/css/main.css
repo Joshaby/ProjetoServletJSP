@@ -107,6 +107,11 @@ a, a:visited {
     border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 30px;
+    width: 500px;
+}
+
+.container-contacts {
+    width: auto;
 }
 
 .div-buttons {
@@ -116,13 +121,13 @@ a, a:visited {
     justify-content: space-between;
 }
 
-.div-buttons1 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0px 25px;
-}
+/*.div-buttons1 {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*    margin: 0px 25px;*/
+/*}*/
 
 .show-password {
     margin: 20px 0px;
@@ -163,10 +168,15 @@ a, a:visited {
 .contacts-div {
     margin: 5px 0px;
     padding: 5px;
+    width: auto;
 }
 
 .username {
     margin-right: 5px;
+}
+
+.contact-name {
+    margin-right: 50px;
 }
 
 .title-contacts {

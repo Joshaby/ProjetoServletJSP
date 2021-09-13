@@ -24,7 +24,7 @@ public class UsuarioRepository {
         Endereco endereco = new Endereco(
                 "Rua Aurealuz Maciel de Lima", 181, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
-        Contato contato = new Contato("Henrique Brito", 123456, 123456, endereco);
+        Contato contato = new Contato("Henrique Brito Henrique Brito Henrique Brito Henrique Brito", 123456, 123456, endereco);
         usuario.addContato(contato);
 
         Endereco endereco1 = new Endereco(

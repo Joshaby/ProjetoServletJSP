@@ -36,7 +36,7 @@
             <hr>
             <c:forEach items="${contatos}" var="contato">
                 <div class="contacts-div">
-                    <p>${contato.nome}</p>
+                    <p class="contact-name">${contato.nome}</p>
                     <div>
                         <button class="edit-button">Editar</button>
                         <button class="show-button">Ver</button>
