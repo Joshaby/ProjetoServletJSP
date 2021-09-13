@@ -19,7 +19,7 @@
             <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
             <hr>
             <p class="center-text">Email: ${email} já existe!</p>
-            <p class="center-text">Use outro email para o cadastro!</p>
+            <p class="center-text-end">Use outro email para o cadastro!</p>
             <div class="div-buttons">
                 <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
             </div>
