@@ -19,7 +19,7 @@ public class UsuarioRepository {
         Usuario usuario = new Usuario("José Henrique", "josehenriquebrito55@gmail.com", "123456");
         Usuario usuario1 = new Usuario("Henrique Brito", "henriquebrito@gmail.com", "123456");
         Usuario usuario2 = new Usuario("Érica Clementino", "ericaclementino@gmail.com", "123456");
-        Usuario usuario3 = new Usuario("Ítalo Nevez", "italogostosinhopegador2010@live.com.br", "123456");
+        Usuario usuario3 = new Usuario("Ítalo Neves", "italo.neves@gmail.com", "123456");
 
         Endereco endereco = new Endereco(
                 "Rua Aurealuz Maciel de Lima", 181, "Casa", "Três Irmãs",
