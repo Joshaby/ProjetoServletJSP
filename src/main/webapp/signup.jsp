@@ -8,16 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pt-br">
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Registrar</title>
+</head>
 <body>
     <main>
         <div class="main-div container">
             <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
             <hr>
             <h2>Registro de novo usuário</h2>
-            <form action="/signup" method="post">
+            <form action="/signup" method="post" accept-charset="UTF-8">
                 <div class="nome-div">
                     <span>Nome</span>
                     <span id="username-error"></span>

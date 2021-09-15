@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="qtde" scope="page" value="${0}"/>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -37,7 +38,7 @@
             <hr>
             <c:forEach items="${contatos}" var="contato">
                 <div class="contacts-div">
-                    <p>${contato.nome}</p>
+                    <p class="contact-name">${contato.nome}</p>
                     <div>
                         <button class="edit-button">Editar</button>
                         <button class="show-button">Ver</button>

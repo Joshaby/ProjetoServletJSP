@@ -7,17 +7,19 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-    <html lang="pt-br">
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Senha incorreta!</title>
+    <title>Senha incorreta</title>
+</head>
 <body>
     <main>
         <div class="main-div container1">
             <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
             <hr>
             <p class="center-text">Senha incorreta!</p>
-            <div class="div-buttons1">
+            <div class="div-buttons">
                 <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
             </div>
         </div>
