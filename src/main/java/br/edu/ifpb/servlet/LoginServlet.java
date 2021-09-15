@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -18,6 +19,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(
             HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
@@ -30,6 +32,9 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("email", email);
                 request.setAttribute("nome", usuario.getNome());
                 request.setAttribute("contatos", usuario.getContatos());
+
+                HttpSession s = request.getSession();
+                s.setAttribute("emailLog",email);
                 requestDispatcher = request.getRequestDispatcher("/home.jsp");
             }
             else {
