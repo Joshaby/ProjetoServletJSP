@@ -30,5 +30,7 @@ public class Endereco {
         if (o == null || getClass() != o.getClass()) return false;
         Endereco endereco = (Endereco) o;
         return numero.equals(endereco.numero) && cep.equals(endereco.cep);
+
     }
+
 }

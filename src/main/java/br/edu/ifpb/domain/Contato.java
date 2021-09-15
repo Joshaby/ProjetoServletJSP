@@ -35,4 +35,14 @@ public class Contato {
         Contato other = (Contato) obj;
         return Objects.equals(getCpf(), other.getCpf());
     }
+
+    @Override
+    public String toString() {
+        return "Contato{" +
+                "nome='" + nome + '\'' +
+                ", rg=" + rg +
+                ", cpf=" + cpf +
+                ", enderecos=" + enderecos +
+                '}';
+    }
 }
