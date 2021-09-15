@@ -30,7 +30,9 @@
         <div class="main-div container-contacts">
             <div class="title-div">
                 <h2 class="title-contacts">Contatos</h2>
+                <a href="/cadastrarcontato.jsp">
                 <button class="add-button">Adicionar</button>
+                </a>
             </div>
             <hr>
             <c:forEach items="${contatos}" var="contato">
