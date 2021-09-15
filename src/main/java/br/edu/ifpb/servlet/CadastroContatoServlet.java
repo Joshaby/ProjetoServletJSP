@@ -54,7 +54,7 @@ public class CadastroContatoServlet extends HttpServlet {
             Usuario u = usuarioRepository.findByEmail(emailLog);
             u.addContato(contato);
             u.getContatos().stream().forEach(System.out::println);
-            response.sendRedirect("/listaContatos");
+            response.sendRedirect("/listarContatos");
 
         }
 
