@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Objects;
@@ -27,12 +28,12 @@ public class SignUpServlet extends HttpServlet {
         UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
         Usuario usuario = usuarioRepository.findByEmail(email);
         RequestDispatcher requestDispatcher = null;
-        request.setAttribute("email", email);
         if (!Objects.nonNull(usuario)) {
             usuarioRepository.add(nome, email, senha);
-            request.setAttribute("email", email);
             request.setAttribute("nome", nome);
             request.setAttribute("contatos", new HashSet<>());
+            HttpSession session = request.getSession();
+            session.setAttribute("emailLog", email);
             requestDispatcher = request.getRequestDispatcher("/home.jsp");
         }
         else {

@@ -20,7 +20,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(
             HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         System.out.println(email + ' ' + senha);
@@ -29,12 +28,10 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = null;
         if (Objects.nonNull(usuario)) {
             if (usuario.getSenha().equals(senha)) {
-                request.setAttribute("email", email);
                 request.setAttribute("nome", usuario.getNome());
                 request.setAttribute("contatos", usuario.getContatos());
-
-                HttpSession s = request.getSession();
-                s.setAttribute("emailLog",email);
+                HttpSession session = request.getSession();
+                session.setAttribute("emailLog", email);
                 requestDispatcher = request.getRequestDispatcher("/home.jsp");
             }
             else {
