@@ -46,11 +46,10 @@ public class CadastroContatoServlet extends HttpServlet {
             Integer cepInteger = Integer.valueOf(cep);
             Integer numeroInteger = Integer.valueOf(numero);
 
-            Endereco endereco = new Endereco(rua,numeroInteger,complemento,bairro,cepInteger,cidade,uf);
-            Contato contato = new Contato(nome,rgInteger,cpfInteger,endereco);
-
             String emailLog = (String) request.getSession().getAttribute("emailLog");
             UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
+            Endereco endereco = new Endereco(UsuarioRepository.getUsuarioId(), rua,numeroInteger,complemento,bairro,cepInteger,cidade,uf);
+            Contato contato = new Contato(UsuarioRepository.getContatoId(), nome,rgInteger,cpfInteger,endereco);
             Usuario u = usuarioRepository.findByEmail(emailLog);
             u.addContato(contato);
             u.getContatos().stream().forEach(System.out::println);

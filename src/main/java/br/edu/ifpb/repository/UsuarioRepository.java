@@ -14,36 +14,40 @@ public class UsuarioRepository {
 
     private Set<Usuario> usuarios;
 
+    private static Integer usuarioId = 1;
+    private static Integer contatoId = 1;
+    private static Integer enderecoId = 1;
+
     private UsuarioRepository() {
         this.usuarios = new HashSet<>();
-        Usuario usuario = new Usuario("José Henrique", "josehenriquebrito55@gmail.com", "123456");
-        Usuario usuario1 = new Usuario("Henrique Brito", "henriquebrito@gmail.com", "123456");
-        Usuario usuario2 = new Usuario("Érica Clementino", "ericaclementino@gmail.com", "123456");
-        Usuario usuario3 = new Usuario("Ítalo Neves", "italo.neves@gmail.com", "123456");
+        Usuario usuario = new Usuario(usuarioId ++, "José Henrique", "josehenriquebrito55@gmail.com", "123456");
+        Usuario usuario1 = new Usuario(usuarioId ++, "Henrique Brito", "henriquebrito@gmail.com", "123456");
+        Usuario usuario2 = new Usuario(usuarioId ++, "Érica Clementino", "ericaclementino@gmail.com", "123456");
+        Usuario usuario3 = new Usuario(usuarioId ++, "Ítalo Neves", "italo.neves@gmail.com", "123456");
 
-        Endereco endereco = new Endereco(
+        Endereco endereco = new Endereco(contatoId ++,
                 "Rua Aurealuz Maciel de Lima", 181, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
-        Contato contato = new Contato("Henrique Brito Henrique Brito Henrique Brito Henrique Brito", 123456, 123456, endereco);
+        Contato contato = new Contato(enderecoId ++, "Henrique Brito Henrique Brito Henrique Brito Henrique Brito", 123456, 123456, endereco);
         usuario.addContato(contato);
 
-        Endereco endereco1 = new Endereco(
+        Endereco endereco1 = new Endereco(contatoId ++,
                 "Rua Aurealuz Maciel de Lima", 184, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
-        Contato contato1 = new Contato("Henrique Brito", 123456, 123457, endereco1);
+        Contato contato1 = new Contato(enderecoId ++, "Henrique Brito", 123456, 123457, endereco1);
         usuario1.addContato(contato1);
 
-        Endereco endereco2 = new Endereco(
+        Endereco endereco2 = new Endereco(contatoId ++,
                 "Rua Aurealuz Maciel de Lima", 186, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
-        Contato contato2 = new Contato("Henrique Brito", 123456, 123458, endereco2);
+        Contato contato2 = new Contato(enderecoId ++, "Henrique Brito", 123456, 123458, endereco2);
         usuario.addContato(contato2);
         usuario1.addContato(contato1);
 
-        Endereco endereco3 = new Endereco(
+        Endereco endereco3 = new Endereco(contatoId ++,
                 "Rua Aurealuz Maciel de Lima", 183, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
-        Contato contato3 = new Contato("Henrique Brito", 123456, 123459, endereco3);
+        Contato contato3 = new Contato(enderecoId ++, "Henrique Brito", 123456, 123459, endereco3);
         usuario3.addContato(contato3);
 
         usuarios.add(usuario);
@@ -58,7 +62,7 @@ public class UsuarioRepository {
     }
 
     public boolean add(String nome, String email, String senha) {
-        Usuario usuario = new Usuario(nome, email, senha);
+        Usuario usuario = new Usuario(usuarioId ++, nome, email, senha);
         return usuarios.add(usuario);
     }
 
@@ -68,8 +72,8 @@ public class UsuarioRepository {
 
         Usuario usuario = findByEmail(email);
         if (Objects.nonNull(usuario)) {
-            Endereco endereco = new Endereco(rua, numero, complemento, bairro, cep, cidade, unidadeFederariva);
-            Contato contato = new Contato(nome, rg, cpf, endereco);
+            Endereco endereco = new Endereco(enderecoId ++, rua, numero, complemento, bairro, cep, cidade, unidadeFederariva);
+            Contato contato = new Contato(contatoId ++, nome, rg, cpf, endereco);
             return usuario.addContato(contato);
         }
         return false;
@@ -86,5 +90,17 @@ public class UsuarioRepository {
             return true;
         }
         return false;
+    }
+
+    public static Integer getUsuarioId() {
+        return usuarioId ++;
+    }
+
+    public static Integer getContatoId() {
+        return contatoId ++;
+    }
+
+    public static Integer getEnderecoId() {
+        return enderecoId ++;
     }
 }
