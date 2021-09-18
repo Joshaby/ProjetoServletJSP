@@ -11,12 +11,14 @@ import java.util.Set;
 @Setter
 public class Contato {
 
+    private Integer id;
     private String nome;
     private Integer rg;
     private Integer cpf;
     private Set<Endereco> enderecos = new HashSet<>();
 
-    public Contato(String nome, Integer rg, Integer cpf, Endereco endereco) {
+    public Contato(Integer id, String nome, Integer rg, Integer cpf, Endereco endereco) {
+        this.id = id;
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;

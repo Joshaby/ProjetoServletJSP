@@ -11,6 +11,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Endereco {
 
+    private Integer id;
     private String rua;
     private Integer numero;
     private String complemento;
