@@ -18,17 +18,7 @@ public class ListaContatosServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String emailLogado = (String) request.getSession().getAttribute("emailLog");
-       UsuarioRepository usuarioRepository =  UsuarioRepository.getInstance();
-       Usuario usuario = usuarioRepository.findByEmail(emailLogado);
-       Set<Contato> contatos =  usuario.getContatos();
-       request.setAttribute("contatos", contatos);
-       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
-       requestDispatcher.forward(request, response);
-
-
-
-
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
+        requestDispatcher.forward(request, response);
     }
 }

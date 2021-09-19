@@ -18,7 +18,7 @@ public class Endereco {
     private String bairro;
     private Integer cep;
     private String cidade;
-    private String unidadeFederariva;
+    private String unidadeFederativa;
 
     @Override
     public int hashCode() {

@@ -38,7 +38,7 @@
                 <div class="address-div">
                     <p class="address-name">Rua: ${endereco.rua} - ${endereco.numero}</p>
                     <div>
-                        <a href="/enderecos/edit?eId=${endereco.id}"><button class="edit-button">Editar</button></a>
+                        <a href="/enderecos/form?eId=${endereco.id}"><button class="edit-button">Editar</button></a>
                         <a href="/enderecos/del?eId=${endereco.id}"><button class="remove-button">Remover</button></a>
                     </div>
                 </div>
