@@ -38,6 +38,7 @@ public class CadastroContatoServlet extends HttpServlet {
                 || bairro.isBlank() || cidade.isBlank() || uf.isBlank()) {
             System.out.println("teste" );
             RequestDispatcher rd = request.getRequestDispatcher("/invalidaddress.jsp");
+            rd.forward(request,response);
 
         }
         else {
@@ -53,16 +54,9 @@ public class CadastroContatoServlet extends HttpServlet {
             Usuario u = usuarioRepository.findByEmail(emailLog);
             u.addContato(contato);
             u.getContatos().stream().forEach(System.out::println);
-            response.sendRedirect("/listarContatos");
+            response.sendRedirect("/home");
 
         }
-
-
-
-
-
-
-
 
     }
 
