@@ -34,7 +34,7 @@ public class UsuarioRepository {
         Endereco endereco1 = new Endereco(contatoId ++,
                 "Aurealuz Maciel de Lima", 184, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
-        Contato contato1 = new Contato(enderecoId ++, "Henrique Brito", 123456, 123457, endereco1);
+        Contato contato1 = new Contato(enderecoId ++, "Joaquim", 123456, 123457, endereco1);
         usuario1.addContato(contato1);
 
         Endereco endereco2 = new Endereco(contatoId ++,
@@ -47,7 +47,7 @@ public class UsuarioRepository {
         Endereco endereco3 = new Endereco(contatoId ++,
                 "Aurealuz Maciel de Lima", 183, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
-        Contato contato3 = new Contato(enderecoId ++, "Henrique Brito", 123456, 123459, endereco3);
+        Contato contato3 = new Contato(enderecoId ++, "Italo Neves", 123456, 123459, endereco3);
         usuario3.addContato(contato3);
 
         usuarios.add(usuario);
