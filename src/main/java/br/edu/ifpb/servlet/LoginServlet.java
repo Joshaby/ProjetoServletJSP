@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("nome", usuario.getNome());
                 session.setAttribute("contatos", usuario.getContatos());
                 session.setAttribute("emailLog", email);
-                response.sendRedirect("/home.jsp");
+                response.sendRedirect("/home");
             }
             else {
                 response.sendRedirect("/invalidpassword.jsp");

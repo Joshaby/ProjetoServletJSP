@@ -20,7 +20,7 @@
             <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
             <hr>
             <h2>Editar endereço</h2>
-            <form action="/enderecos/new" method="post" accept-charset="UTF-8">
+            <form action="/enderecos/edit?eId=${endereco.id}" method="post" accept-charset="UTF-8">
                 <div class="label-input-div">
                     <span>Rua</span>
                     <span id="rua-error"></span>
@@ -35,7 +35,7 @@
                     <span>Complemento</span>
                     <span id="complemento-error"></span>
                 </div>
-                <input id="complemento" type="text" name="complemento" value=""${endereco.complemento}/>
+                <input id="complemento" type="text" name="complemento" value="${endereco.complemento}"/>
                 <div class="label-input-div">
                     <span>Bairro</span>
                     <span id="bairro-error"></span>

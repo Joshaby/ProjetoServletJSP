@@ -17,7 +17,6 @@
             <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
             <hr>
             <p class="center-text">Você deve inserir um endereço para efetuar o cadastro do contato com sucesso.</p>
-
         </div>
     </main>
     <script src="js/main.js"></script>
