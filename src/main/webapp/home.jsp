@@ -38,7 +38,7 @@
                 <div class="contacts-div">
                     <p class="contact-name">${contato.nome}</p>
                     <div>
-                        <button class="edit-button">Editar</button>
+                        <a href="/contatos/form?cId=${contato.id}"><button class="edit-button">Editar</button></a>
                         <a href="/enderecos?cId=${contato.id}"><button class="show-button">Ver</button></a>
                         <button class="remove-button">Remover</button>
                     </div>
