@@ -102,7 +102,7 @@ a, a:visited {
     align-items: center;
 }
 
-.container, .container1, .container-contacts  {
+.container, .container1, .container-contacts, .container-address  {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border-color);
@@ -189,7 +189,7 @@ a, a:visited {
     margin-right: 60px;
 }
 
-.title-contacts {
+.title-contacts, .title-address {
     font-size: 25px;
     font-weight: bold;
 }

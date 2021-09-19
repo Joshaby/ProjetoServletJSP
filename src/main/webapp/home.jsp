@@ -31,9 +31,7 @@
         <div class="main-div container-contacts">
             <div class="title-div">
                 <h2 class="title-contacts">Contatos</h2>
-                <a href="/cadastrarcontato.html">
-                <button class="add-button">Adicionar</button>
-                </a>
+                <a href="/cadastrarcontato.html"><button class="add-button">Adicionar</button></a>
             </div>
             <hr>
             <c:forEach items="${contatos}" var="contato">
@@ -41,7 +39,7 @@
                     <p class="contact-name">${contato.nome}</p>
                     <div>
                         <button class="edit-button">Editar</button>
-                        <button class="show-button">Ver</button>
+                        <a href="/enderecos?cId=${contato.id}"><button class="show-button">Ver</button></a>
                         <button class="remove-button">Remover</button>
                     </div>
                 </div>

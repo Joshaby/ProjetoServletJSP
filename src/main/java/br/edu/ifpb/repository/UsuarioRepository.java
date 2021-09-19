@@ -26,26 +26,26 @@ public class UsuarioRepository {
         Usuario usuario3 = new Usuario(usuarioId ++, "Ítalo Neves", "italo.neves@gmail.com", "123456");
 
         Endereco endereco = new Endereco(contatoId ++,
-                "Rua Aurealuz Maciel de Lima", 181, "Casa", "Três Irmãs",
+                "Aurealuz Maciel de Lima", 181, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
         Contato contato = new Contato(enderecoId ++, "Henrique Brito Henrique Brito Henrique Brito Henrique Brito", 123456, 123456, endereco);
         usuario.addContato(contato);
 
         Endereco endereco1 = new Endereco(contatoId ++,
-                "Rua Aurealuz Maciel de Lima", 184, "Casa", "Três Irmãs",
+                "Aurealuz Maciel de Lima", 184, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
         Contato contato1 = new Contato(enderecoId ++, "Henrique Brito", 123456, 123457, endereco1);
         usuario1.addContato(contato1);
 
         Endereco endereco2 = new Endereco(contatoId ++,
-                "Rua Aurealuz Maciel de Lima", 186, "Casa", "Três Irmãs",
+                "Aurealuz Maciel de Lima", 186, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
         Contato contato2 = new Contato(enderecoId ++, "Henrique Brito", 123456, 123458, endereco2);
         usuario.addContato(contato2);
         usuario1.addContato(contato1);
 
         Endereco endereco3 = new Endereco(contatoId ++,
-                "Rua Aurealuz Maciel de Lima", 183, "Casa", "Três Irmãs",
+                "Aurealuz Maciel de Lima", 183, "Casa", "Três Irmãs",
                 58423163, "Campina Grande", "PB");
         Contato contato3 = new Contato(enderecoId ++, "Henrique Brito", 123456, 123459, endereco3);
         usuario3.addContato(contato3);

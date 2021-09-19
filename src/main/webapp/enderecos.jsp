@@ -21,27 +21,25 @@
             <div class="nav-div">
                 <h1>Sistema de cadastro de contatos - SCC</h1>
                 <div>
-                    <span class="username">Usuário: ${nome}</span>
+                    <span class="username">Usuário: ${nomeUsuario}</span>
                     <button class="exit-button">Sair</button>
                 </div>
             </div>
         </nav>
     </header>
     <main>
-        <div class="main-div container-contacts">
+        <div class="main-div container-address">
             <div class="title-div">
-                <h2 class="title-contacts">Ver endereço de ${nome}</h2>
-                <a href="/cadastrarendereco.jsp">
-                <button class="add-button">Adicionar</button>
-                </a>
+                <h2 class="title-address">Endereços de: ${nomeContato}</h2>
+                <a href="/enderecos/new.jsp"><button class="add-button">Adicionar</button></a>
             </div>
             <hr>
-            <c:forEach items="${contatos}" var="contato">
-                <div class="contacts-div">
-                    <p class="contact-name">${contato.nome}</p>
+            <c:forEach items="${enderecos}" var="endereco">
+                <div class="address-div">
+                    <p class="address-name">Rua: ${endereco.rua} - ${endereco.numero}</p>
                     <div>
-                        <button class="edit-button">Editar</button>
-                        <button class="remove-button">Remover</button>
+                        <a href="/enderecos/edit?cId=${cId}&eId=${endereco.id}"><button class="edit-button">Editar</button></a>
+                        <a href="/enderecos/edit?cId=${cId}&eId=${endereco.id}"><button class="remove-button">Remover</button></a>
                     </div>
                 </div>
                 <c:set var="qtde" scope="page" value="${qtde + 1}"/>

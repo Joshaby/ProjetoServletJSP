@@ -14,12 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
-@WebServlet("/enderecos")
+@WebServlet(urlPatterns = {"/enderecos", "/enderecos/new"})
 public class ShowEnderecosServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        System.out.println(request.getRequestURI());
 
         String email = request.getSession().getAttribute("emailLog").toString();
         Integer cId = Integer.valueOf(request.getParameter("cId"));
@@ -29,8 +31,9 @@ public class ShowEnderecosServlet extends HttpServlet {
         Set<Endereco> enderecos = contato.getEnderecos();
         request.setAttribute("nomeUsuario", usuario.getNome());
         request.setAttribute("nomeContato", contato.getNome());
+        request.setAttribute("cId", contato.getId());
         request.setAttribute("enderecos", enderecos);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/listaEndereco.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/enderecos.jsp");
         requestDispatcher.forward(request, response);
     }
 }
