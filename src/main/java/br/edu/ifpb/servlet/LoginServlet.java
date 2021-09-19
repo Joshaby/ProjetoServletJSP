@@ -22,26 +22,25 @@ public class LoginServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
+        HttpSession session = request.getSession();
         System.out.println(email + ' ' + senha);
         UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
         Usuario usuario = usuarioRepository.findByEmail(email);
         RequestDispatcher requestDispatcher = null;
         if (Objects.nonNull(usuario)) {
             if (usuario.getSenha().equals(senha)) {
-                request.setAttribute("nome", usuario.getNome());
-                request.setAttribute("contatos", usuario.getContatos());
-                HttpSession session = request.getSession();
+                session.setAttribute("nome", usuario.getNome());
+                session.setAttribute("contatos", usuario.getContatos());
                 session.setAttribute("emailLog", email);
-                requestDispatcher = request.getRequestDispatcher("/home.jsp");
+                response.sendRedirect("/home.jsp");
             }
             else {
-                requestDispatcher = request.getRequestDispatcher("/invalidpassword.jsp");
+                response.sendRedirect("/invalidpassword.jsp");
             }
         }
         else {
-            requestDispatcher = request.getRequestDispatcher("/invalidemail.jsp");
-            request.setAttribute("email", email);
+            session.setAttribute("emailLog", email);
+            response.sendRedirect("/invalidemail.jsp");
         }
-        requestDispatcher.forward(request, response);
     }
 }

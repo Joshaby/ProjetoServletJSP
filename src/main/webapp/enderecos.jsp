@@ -31,15 +31,15 @@
         <div class="main-div container-address">
             <div class="title-div">
                 <h2 class="title-address">Endereços de: ${nomeContato}</h2>
-                <a href="/enderecos/new.jsp"><button class="add-button">Adicionar</button></a>
+                <a href="/cadastrarendereco.jsp"><button class="add-button">Adicionar</button></a>
             </div>
             <hr>
             <c:forEach items="${enderecos}" var="endereco">
                 <div class="address-div">
                     <p class="address-name">Rua: ${endereco.rua} - ${endereco.numero}</p>
                     <div>
-                        <a href="/enderecos/edit?cId=${cId}&eId=${endereco.id}"><button class="edit-button">Editar</button></a>
-                        <a href="/enderecos/edit?cId=${cId}&eId=${endereco.id}"><button class="remove-button">Remover</button></a>
+                        <a href="/enderecos/edit?eId=${endereco.id}"><button class="edit-button">Editar</button></a>
+                        <a href="/enderecos/del?eId=${endereco.id}"><button class="remove-button">Remover</button></a>
                     </div>
                 </div>
                 <c:set var="qtde" scope="page" value="${qtde + 1}"/>

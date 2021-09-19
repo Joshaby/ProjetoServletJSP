@@ -52,10 +52,10 @@
                 </div>
                 <input id="cidade" type="text" name="cidade"/>
                 <div class="label-input-div">
-                    <span>Estado</span>
-                    <span id="estato-error"></span>
+                    <span>Unidade Federativa</span>
+                    <span id="unidadeFederativa-error"></span>
                 </div>
-                <input id="estado" type="text" name="estado"/>
+                <input id="unidadeFederativa" type="text" name="unidadeFederativa"/>
                 <div class="div-buttons last-button">
                     <button class="login-button" type="submit">Cadastrar</button>
                     <button class="return-button" type="button" onclick="previusPage()">Voltar</button>

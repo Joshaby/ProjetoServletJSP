@@ -25,6 +25,10 @@ public class Contato {
         enderecos.add(endereco);
     }
 
+    public boolean addEndereco(Endereco endereco) {
+        return enderecos.add(endereco);
+    }
+
     @Override
     public int hashCode() {
         return Objects.hashCode(getCpf());
