@@ -15,55 +15,55 @@
     <title>Cadastar Contato</title>
 </head>
 <body>
-    <main class="main-contato">
-            <div class="titulo">
-                <h1 class="center-text">Cadastrar Endereço</h1>
-             </div>
-                <form action="/cadastrarEndereco" method="post">
-                       <div class="div-endereco" >
-                              <div>
-                                   <span>Rua</span>
-                              </div>
-                                   <input id="rua" type="text" name="rua"/>
-                               <div>
-                                    <span>Número</span>
-                               </div>
-                                    <input id="numero" type="text" name="numero"/>
-                               <div>
-                                      <span>Complemento</span>
-                               </div>
-                                       <input id="complemento" type="text" name="complemento"/>
-                               <div>
-                                        <span>Bairro</span>
-                               </div>
-                                        <input id="bairro" type="text" name="bairro"/>
-                               <div>
-                                        <span>CEP</span>
-                               </div>
-                                         <input id="cep" type="text" name="cep"/>
-                               <div>
-                                          <span>Cidade</span>
-                               </div>
-                                          <input id="cidade" type="text" name="cidade"/>
-
-                              <div>
-                                        <span>Unidade Federativa(UF)</span>
-                              </div>
-                                       <input id="uf" type="text" name="uf"/>
-
-                       </div>
-
-                       <div class="div-buttons">
-                           <a href="/listaEndereco.jsp"><button class="cadastro-contato-button" type="submit" value="cadastar"
-                           >Cadastar</button></a>
-                       </div>
-                </form>
-
+    <main>
+        <div class="main-div container">
+            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+            <hr>
+            <h2>Cadastrar endereço</h2>
+            <form action="/enderecos/new" method="post" accept-charset="UTF-8">
+                <div class="label-input-div">
+                    <span>Rua</span>
+                    <span id="rua-error"></span>
+                </div>
+                <input id="rua" type="text" name="rua"/>
+                <div class="label-input-div">
+                    <span>Número</span>
+                    <span id="email-error"></span>
+                </div>
+                <input id="numero" type="text" name="numero"/>
+                <div class="label-input-div">
+                    <span>Complemento</span>
+                    <span id="complemento-error"></span>
+                </div>
+                <input id="complemento" type="text" name="complemento"/>
+                <div class="label-input-div">
+                    <span>Bairro</span>
+                    <span id="bairro-error"></span>
+                </div>
+                <input id="bairro" type="text" name="bairro"/>
+                <div class="label-input-div">
+                    <span>CEP</span>
+                    <span id="cep-error"></span>
+                </div>
+                <input id="cep" class="entry" type="text" name="cep"/>
+                <div class="label-input-div">
+                    <span>Cidade</span>
+                    <span id="cidade-error"></span>
+                </div>
+                <input id="cidade" type="text" name="cidade"/>
+                <div class="label-input-div">
+                    <span>Estado</span>
+                    <span id="estato-error"></span>
+                </div>
+                <input id="estado" type="text" name="estado"/>
+                <div class="div-buttons last-button">
+                    <button class="login-button" type="submit">Cadastrar</button>
+                    <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
+                </div>
+            </form>
+        </div>
     </main>
-        <script src="js/main.js"></script>
-        <script src="js/validation.js"></script>
-
-
-
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>

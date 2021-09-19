@@ -13,7 +13,6 @@ body {
 
 main {
     position: absolute;
-    position: fixed;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
@@ -111,11 +110,11 @@ a, a:visited {
     width: auto;
 }
 
-.container-contacts {
-    width: auto;
+.container-contacts, .container-address {
+    min-width: 850px;
 }
 
-.div-buttons {
+.div-buttons, .nav-div, .contacts-div, .title-div, .address-div, .label-input-div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -156,23 +155,13 @@ a, a:visited {
     background-color: var(--black);
 }
 
-.password-div, .email-div, .nome-div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .nav-div {
     margin: 5px;
     border-bottom: 1px solid var(--border-color);
 }
 
-.nav-div, .contacts-div, .title-div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+.last-button {
+    margin-top: 20px;
 }
 
 .contacts-div {
@@ -191,17 +180,20 @@ a, a:visited {
 
 .title-contacts, .title-address {
     font-size: 25px;
+    margin-right: 20px;
     font-weight: bold;
 }
 
 .end-text {
     text-align: end;
 }
+
 .main-contato{
     position:absolute;
     padding-top:390px;
     padding-bottom: 50px;
 }
+
 #password-error, #email-error {
     font-size: 12px;
     color: var(--red);
