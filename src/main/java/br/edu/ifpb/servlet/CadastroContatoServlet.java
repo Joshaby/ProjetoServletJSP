@@ -37,7 +37,7 @@ public class CadastroContatoServlet extends HttpServlet {
         if(cep.isBlank()|| rua.isBlank() || numero.isBlank()
                 || bairro.isBlank() || cidade.isBlank() || uf.isBlank()) {
             System.out.println("teste" );
-            RequestDispatcher rd = request.getRequestDispatcher("/invalidAdress.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/invalidaddress.jsp");
 
         }
         else {

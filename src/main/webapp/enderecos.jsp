@@ -31,7 +31,7 @@
         <div class="main-div container-address">
             <div class="title-div">
                 <h2 class="title-address">Endereços de: ${nomeContato}</h2>
-                <a href="/cadastrarendereco.jsp"><button class="add-button">Adicionar</button></a>
+                <a href="/newendereco.jsp"><button class="add-button">Adicionar</button></a>
             </div>
             <hr>
             <c:forEach items="${enderecos}" var="endereco">
