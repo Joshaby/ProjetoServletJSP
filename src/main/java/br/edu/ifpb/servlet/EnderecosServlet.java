@@ -176,11 +176,8 @@ public class EnderecosServlet extends HttpServlet {
                         endereco.get().setUnidadeFederativa(unidadeFederativa);
 
                         HttpSession session = request.getSession();
-                        session.setAttribute("nomeUsuario", usuario.getNome());
-                        session.setAttribute("nomeContato", contato.get().getNome());
-                        session.setAttribute("enderecos", contato.get().getEnderecos());
-
-                        response.sendRedirect("/enderecos.jsp");
+                        session.setAttribute("cId", cId);
+                        response.sendRedirect("/enderecos");
                     }
                 }
             }
