@@ -1,6 +1,7 @@
 package br.edu.ifpb.servlet;
 
 import br.edu.ifpb.domain.Contato;
+import br.edu.ifpb.domain.Endereco;
 import br.edu.ifpb.domain.Usuario;
 import br.edu.ifpb.repository.UsuarioRepository;
 
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet(urlPatterns = {"/home", "/contatos/edit", "/contatos/form","/contatos/del"})
+@WebServlet(urlPatterns = {"/home", "/contatos/new", "/contatos/edit", "/contatos/form","/contatos/del"})
 public class ContatosServlet extends HttpServlet {
 
     private final UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
@@ -28,7 +29,7 @@ public class ContatosServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
             requestDispatcher.forward(request, response);
         }
-        if (request.getRequestURI().equals("/contatos/form")) {
+        else if (request.getRequestURI().equals("/contatos/form")) {
             String email = request.getSession().getAttribute("emailLog").toString();
             Integer cId = Integer.valueOf(request.getParameter("cId"));
             Usuario usuario = usuarioRepository.findByEmail(email);
@@ -37,16 +38,16 @@ public class ContatosServlet extends HttpServlet {
             session.setAttribute("contato", contato);
             response.sendRedirect("/editcontato.jsp");
         }
-        if(request.getRequestURI().equals("/contatos/del")){
+        else if(request.getRequestURI().equals("/contatos/del")){
             System.out.println("entrou aqui");
             String emailLogado = (String) request.getSession().getAttribute("emailLog");
             UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
             Usuario usuario = usuarioRepository.findByEmail(emailLogado);
             Integer idContato = Integer.valueOf(request.getParameter("cId"));
-            Optional<Contato> c = usuario.getContatos().stream().filter(contato -> contato.getId().equals(idContato)).findFirst();
-            if(c.isPresent()){
+            Optional<Contato> contato = usuario.getContatos().stream().filter(c -> c.getId().equals(idContato)).findFirst();
+            if (contato.isPresent()) {
                 System.out.println("entrou aqui2");
-                usuario.removerContato(c.get());
+                usuario.removerContato(contato.get());
                 response.sendRedirect("/home");
             }
         }
@@ -73,6 +74,39 @@ public class ContatosServlet extends HttpServlet {
             session.setAttribute("contatos", usuario.getContatos());
             session.setAttribute("emailLog", email);
             response.sendRedirect("/home");
+        }
+        else if (request.getRequestURI().equals("/contatos/new")) {
+            String nome = request.getParameter("nome");
+            String rg = request.getParameter("rg");
+            String cpf = request.getParameter("cpf");
+            String rua = request.getParameter("rua");
+            String numero = request.getParameter("numero");
+            String complemento = request.getParameter("complemento");
+            String bairro = request.getParameter("bairro");
+            String cep = request.getParameter("cep");
+            String cidade = request.getParameter("cidade");
+            String uf = request.getParameter("unidadeFederativa");
+            if (cep.isBlank()|| rua.isBlank() || numero.isBlank() || bairro.isBlank() || cidade.isBlank() || uf.isBlank()) {
+                System.out.println("teste" );
+                RequestDispatcher rd = request.getRequestDispatcher("/invalidaddress.jsp");
+                rd.forward(request,response);
+            }
+            else {
+                Integer rgInteger = Integer.valueOf(rg);
+                Integer cpfInteger = Integer.valueOf(cpf);
+                Integer cepInteger = Integer.valueOf(cep);
+                Integer numeroInteger = Integer.valueOf(numero);
+                String emailLog = (String) request.getSession().getAttribute("emailLog");
+                UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
+                Endereco endereco = new Endereco(
+                        UsuarioRepository.getEnderecoId(), rua, numeroInteger, complemento, bairro, cepInteger, cidade, uf);
+                Contato contato = new Contato(
+                        UsuarioRepository.getContatoId(), nome, rgInteger, cpfInteger, endereco);
+                Usuario u = usuarioRepository.findByEmail(emailLog);
+                u.addContato(contato);
+                u.getContatos().stream().forEach(System.out::println);
+                response.sendRedirect("/home");
+            }
         }
     }
 
