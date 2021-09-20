@@ -9,7 +9,7 @@
 <!DOCTYPE html>
     <html lang="pt-br">
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <title>Endereço vazio</title>
 <body>
     <main>
@@ -19,6 +19,6 @@
             <p class="center-text">Você deve inserir um endereço para efetuar o cadastro do contato com sucesso.</p>
         </div>
     </main>
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

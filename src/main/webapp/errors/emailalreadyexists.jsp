@@ -10,7 +10,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <title>Email já existe</title>
 </head>
 <body>
@@ -25,6 +25,6 @@
             </div>
         </div>
     </main>
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

@@ -10,21 +10,23 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Senha incorreta</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <title>Email não encontrado</title>
 </head>
 <body>
     <main>
         <div class="main-div container1">
             <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
             <hr>
-            <p class="center-text">Senha incorreta!</p>
+            <p class="center-text">Email: ${email} não encontrado!</p>
+            <p class="center-text-end">Se cadastre no sistema para continuar!</p>
             <div class="div-buttons">
+                <button class="login-button">Resgistrar-se</button>
                 <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
             </div>
         </div>
     </main>
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
 
