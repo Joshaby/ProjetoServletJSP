@@ -28,12 +28,20 @@ public class EnderecosServlet extends HttpServlet {
 
         if (request.getRequestURI().equals("/enderecos")) {
             String email = request.getSession().getAttribute("emailLog").toString();
-            Integer cId = Integer.valueOf(request.getParameter("cId"));
+            Integer cId = 0;
+
+            if (request.getParameter("cId") == null) {
+                cId = Integer.valueOf(request.getSession().getAttribute("cId").toString());
+            }
+            else {
+                cId = Integer.valueOf(request.getParameter("cId"));
+            }
 
             Usuario usuario = usuarioRepository.findByEmail(email);
 
             if (Objects.nonNull(usuario)) {
-                Optional<Contato> contato = usuario.getContatos().stream().filter(c -> c.getId().equals(cId)).findFirst();
+                Integer finalCId = cId;
+                Optional<Contato> contato = usuario.getContatos().stream().filter(c -> c.getId().equals(finalCId)).findFirst();
 
                 if (contato.isPresent()) {
                     Set<Endereco> enderecos = contato.get().getEnderecos();
@@ -72,6 +80,29 @@ public class EnderecosServlet extends HttpServlet {
                 }
             }
         }
+        else if (request.getRequestURI().equals("/enderecos/del")) {
+            String email = request.getSession().getAttribute("emailLog").toString();
+            Integer cId = Integer.valueOf(request.getSession().getAttribute("cId").toString());
+            Integer eId = Integer.valueOf(request.getParameter("eId"));
+
+            Usuario usuario = usuarioRepository.findByEmail(email);
+
+            if (Objects.nonNull(usuario)) {
+                Optional<Contato> contato = usuario.getContatos().stream().filter(c -> c.getId().equals(cId)).findFirst();
+
+                if (contato.isPresent()) {
+                    Optional<Endereco> endereco = contato.get().getEnderecos().stream().filter(e -> e.getId().equals(eId)).findFirst();
+
+                    if (endereco.isPresent()) {
+                        if (contato.get().removeEndereco(endereco.get())) {
+                            HttpSession session = request.getSession();
+                            session.setAttribute("cId", cId);
+                            response.sendRedirect("/enderecos");
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // /enderecos/new e /enderecos/edit
@@ -102,14 +133,14 @@ public class EnderecosServlet extends HttpServlet {
                     HttpSession session = request.getSession();
 
                     if (contato.get().addEndereco(endereco)) {
-                        session.setAttribute("nomeUsuario", usuario.getNome());
-                        session.setAttribute("nomeContato", contato.get().getNome());
-                        session.setAttribute("enderecos", contato.get().getEnderecos());
-
-                        response.sendRedirect("/enderecos.jsp");
+                        session.setAttribute("cId", contato.get().getId());
+                        response.sendRedirect("/enderecos");
                     }
                     else {
-                        System.out.println("Endereço já existe!!");
+                        request.setAttribute("rua", endereco.getRua());
+                        request.setAttribute("numero", endereco.getNumero());
+                        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/errors/enderecoalreadyexists.jsp");
+                        requestDispatcher.forward(request, response);
                     }
                 }
             }

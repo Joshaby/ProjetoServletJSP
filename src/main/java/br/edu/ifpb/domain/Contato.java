@@ -28,6 +28,9 @@ public class Contato {
     public boolean addEndereco(Endereco endereco) {
         return enderecos.add(endereco);
     }
+    public boolean removeEndereco(Endereco endereco) {
+        return enderecos.remove(endereco);
+    }
 
     @Override
     public int hashCode() {
