@@ -38,12 +38,12 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("/home");
             }
             else {
-                response.sendRedirect("/invalidpassword.jsp");
+                response.sendRedirect("/errors/invalidpassword.jsp");
             }
         }
         else {
             session.setAttribute("emailLog", email);
-            response.sendRedirect("/invalidemail.jsp");
+            response.sendRedirect("/errors/invalidemail.jsp");
         }
     }
 }
