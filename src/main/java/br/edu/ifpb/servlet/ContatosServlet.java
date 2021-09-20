@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 @WebServlet(urlPatterns = {"/home", "/contatos/new", "/contatos/edit", "/contatos/form","/contatos/del"})
@@ -33,12 +34,27 @@ public class ContatosServlet extends HttpServlet {
             Integer cId = Integer.valueOf(request.getParameter("cId"));
 
             Usuario usuario = usuarioRepository.findByEmail(email);
-            Contato contato = usuario.getContatos().stream().filter(c -> c.getId().equals(cId)).findFirst().get();
 
-            HttpSession session = request.getSession();
-            session.setAttribute("contato", contato);
+            if (Objects.nonNull(usuario)) {
+                Optional<Contato> contato = usuario.getContatos().stream().filter(c -> c.getId().equals(cId)).findFirst();
 
-            response.sendRedirect("/editcontato.jsp");
+                if (contato.isPresent()) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("contato", contato);
+
+                    response.sendRedirect("/editcontato.jsp");
+                }
+                else {
+                    request.setAttribute("contato", contato);
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/contatonotexists.jsp");
+                    requestDispatcher.forward(request, response);
+                }
+            }
+            else {
+                request.setAttribute("usuario", usuario);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/usuarionotexists.jsp");
+                requestDispatcher.forward(request, response);
+            }
         }
         else if(request.getRequestURI().equals("/contatos/del")){
             String emailLogado = (String) request.getSession().getAttribute("emailLog");
@@ -92,7 +108,6 @@ public class ContatosServlet extends HttpServlet {
             String uf = request.getParameter("unidadeFederativa");
 
             if (cep.isBlank()|| rua.isBlank() || numero.isBlank() || bairro.isBlank() || cidade.isBlank() || uf.isBlank()) {
-                System.out.println("teste" );
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/invalidaddress.jsp");
                 requestDispatcher.forward(request, response);
             }
@@ -104,14 +119,22 @@ public class ContatosServlet extends HttpServlet {
                 String emailLog = (String) request.getSession().getAttribute("emailLog");
 
                 UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
-                Endereco endereco = new Endereco(
-                        UsuarioRepository.getEnderecoId(), rua, numeroInteger, complemento, bairro, cepInteger, cidade, uf);
-                Contato contato = new Contato(
-                        UsuarioRepository.getContatoId(), nome, rgInteger, cpfInteger, endereco);
-                Usuario u = usuarioRepository.findByEmail(emailLog);
-                u.addContato(contato);
+                Usuario usuario = usuarioRepository.findByEmail(emailLog);
 
-                response.sendRedirect("/home");
+                if (Objects.nonNull(usuario)) {
+                    Endereco endereco = new Endereco(
+                            UsuarioRepository.getEnderecoId(), rua, numeroInteger, complemento, bairro, cepInteger, cidade, uf);
+                    Contato contato = new Contato(
+                            UsuarioRepository.getContatoId(), nome, rgInteger, cpfInteger, endereco);
+                    if (usuario.addContato(contato)) {
+                        response.sendRedirect("/home");
+                    }
+                    else {
+                        request.setAttribute("nome", contato.getNome());
+                        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/contatoalreadyexists.jsp");
+                        requestDispatcher.forward(request, response);
+                    }
+                }
             }
         }
     }

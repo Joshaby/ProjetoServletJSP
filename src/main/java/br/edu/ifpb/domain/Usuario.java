@@ -24,13 +24,13 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public void removerContato(Contato contato){
-        contatos.remove(contato);
-
+    public boolean removerContato(Contato contato){
+        return contatos.remove(contato);
     }
     public boolean addContato(Contato contato) {
         return contatos.add(contato);
     }
+
     @Override
     public int hashCode() {
         return Objects.hashCode(getEmail());
