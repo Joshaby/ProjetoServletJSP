@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet(urlPatterns = {"/home", "/contatos/edit", "/contatos/form","/contatos/delete"})
+@WebServlet(urlPatterns = {"/home", "/contatos/edit", "/contatos/form","/contatos/del"})
 public class ContatosServlet extends HttpServlet {
 
     private final UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
@@ -37,22 +37,18 @@ public class ContatosServlet extends HttpServlet {
             session.setAttribute("contato", contato);
             response.sendRedirect("/editcontato.jsp");
         }
-        if(request.getRequestURI().equals("/contatos/delete")){
+        if(request.getRequestURI().equals("/contatos/del")){
             System.out.println("entrou aqui");
             String emailLogado = (String) request.getSession().getAttribute("emailLog");
             UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
             Usuario usuario = usuarioRepository.findByEmail(emailLogado);
-
             Integer idContato = Integer.valueOf(request.getParameter("cId"));
             Optional<Contato> c = usuario.getContatos().stream().filter(contato -> contato.getId().equals(idContato)).findFirst();
-
             if(c.isPresent()){
                 System.out.println("entrou aqui2");
                 usuario.removerContato(c.get());
                 response.sendRedirect("/home");
             }
-
-
         }
     }
 

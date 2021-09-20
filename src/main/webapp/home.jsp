@@ -40,7 +40,7 @@
                     <div>
                         <a href="/contatos/form?cId=${contato.id}"><button class="edit-button">Editar</button></a>
                         <a href="/enderecos?cId=${contato.id}"><button class="show-button">Ver</button></a>
-                        <a href="/contatos/delete?cId=${contato.id}"><button class="remove-button">Remover</button></a>
+                        <a href="/contatos/del?cId=${contato.id}"><button class="remove-button">Remover</button></a>
                     </div>
                 </div>
                 <c:set var="qtde" scope="page" value="${qtde + 1}"/>
