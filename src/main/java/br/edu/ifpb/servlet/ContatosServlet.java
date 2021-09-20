@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Optional;
 
-@WebServlet(urlPatterns = {"/home", "/contatos/edit", "/contatos/form"})
+@WebServlet(urlPatterns = {"/home", "/contatos/edit", "/contatos/form","/contatos/delete"})
 public class ContatosServlet extends HttpServlet {
 
     private final UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
@@ -35,6 +36,23 @@ public class ContatosServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("contato", contato);
             response.sendRedirect("/editcontato.jsp");
+        }
+        if(request.getRequestURI().equals("/contatos/delete")){
+            System.out.println("entrou aqui");
+            String emailLogado = (String) request.getSession().getAttribute("emailLog");
+            UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
+            Usuario usuario = usuarioRepository.findByEmail(emailLogado);
+
+            Integer idContato = Integer.valueOf(request.getParameter("cId"));
+            Optional<Contato> c = usuario.getContatos().stream().filter(contato -> contato.getId().equals(idContato)).findFirst();
+
+            if(c.isPresent()){
+                System.out.println("entrou aqui2");
+                usuario.removerContato(c.get());
+                response.sendRedirect("/home");
+            }
+
+
         }
     }
 
@@ -61,4 +79,26 @@ public class ContatosServlet extends HttpServlet {
             response.sendRedirect("/home");
         }
     }
+
+//    @Override
+//    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//
+//        if(request.getRequestURI().equals("/contatos/delete")){
+//            System.out.println("entrou aqui");
+//            String emailLogado = (String) request.getSession().getAttribute("emailLog");
+//            UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
+//            Usuario usuario = usuarioRepository.findByEmail(emailLogado);
+//
+//            Integer idContato = Integer.valueOf(request.getParameter("cId"));
+//            Optional<Contato> c = usuario.getContatos().stream().filter(contato -> contato.getId().equals(idContato)).findFirst();
+//
+//            if(c.isPresent()){
+//                System.out.println("entrou aqui");
+//                usuario.removerContato(c.get());
+//                response.sendRedirect("/home");
+//            }
+//
+//
+//        }
+//    }
 }

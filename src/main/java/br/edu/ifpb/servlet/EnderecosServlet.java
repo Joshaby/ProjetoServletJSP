@@ -111,5 +111,32 @@ public class EnderecosServlet extends HttpServlet {
             session.setAttribute("enderecos", contato.getEnderecos());
             response.sendRedirect("/enderecos.jsp");
         }
+        if(request.getRequestURI().equals("/enderecos/edit")) {
+            String email = request.getSession().getAttribute("emailLog").toString();
+            Integer cId = Integer.valueOf(request.getSession().getAttribute("cId").toString());
+            Integer eId = Integer.valueOf(request.getParameter("eId"));
+            Usuario usuario = usuarioRepository.findByEmail(email);
+            Contato contato = usuario.getContatos().stream().filter(c -> c.getId().equals(cId)).findFirst().get();
+            Endereco endereco = contato.getEnderecos().stream().filter(e -> e.getId().equals(eId)).findFirst().get();
+            String rua = request.getParameter("rua");
+            Integer numero = Integer.valueOf(request.getParameter("numero"));
+            String complemento = request.getParameter("complemento");
+            String bairro = request.getParameter("bairro");
+            Integer cep = Integer.valueOf(request.getParameter("cep"));
+            String cidade = request.getParameter("cidade");
+            String unidadeFederativa = request.getParameter("unidadeFederativa");
+            endereco.setRua(rua);
+            endereco.setNumero(numero);
+            endereco.setComplemento(complemento);
+            endereco.setBairro(bairro);
+            endereco.setCep(cep);
+            endereco.setCidade(cidade);
+            endereco.setUnidadeFederativa(unidadeFederativa);
+            HttpSession session = request.getSession();
+            session.setAttribute("nomeUsuario", usuario.getNome());
+            session.setAttribute("nomeContato", contato.getNome());
+            session.setAttribute("enderecos", contato.getEnderecos());
+            response.sendRedirect("/enderecos.jsp");
+        }
     }
 }
