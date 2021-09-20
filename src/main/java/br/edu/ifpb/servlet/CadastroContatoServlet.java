@@ -30,7 +30,7 @@ public class CadastroContatoServlet extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String cep = request.getParameter("cep");
         String cidade = request.getParameter("cidade");
-        String uf = request.getParameter("uf");
+        String uf = request.getParameter("unidadeFederativa");
 
         //System.out.println(" rg" + rg + " cpf" + cpf + " nome" +  nome);
 

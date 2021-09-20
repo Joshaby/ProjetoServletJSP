@@ -1,80 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Cadastar Contato</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <title>Cadastrar contato</title>
+    </head>
 <body>
-    <main class="main-contato">
-            <div class="titulo">
-                <h1 class="center-text">Cadastrar contato</h1>
-             </div>
-
-                <h2  class="center-text">Contato</h2>
-                <form action="/cadastrarContato" method="post">
-                    <div class="div-contato">
-                       <div>
-                            <span>Nome</span>
-                       </div>
-                        <input id="nome" type="text" name="nome" />
-
-                       <div>
-                        <span>RG</span>
-                       </div>
-                            <input id="rg" type="text" name="rg"/>
-                       <div>
-                           <span>CPF</span>
-                       </div>
-                           <input id="cpf" type="text" name="cpf"/>
-                    </div>
-                       <div class="div-endereco" >
-
-                               <h2 class="center-text">Endereco</h2>
-                              <div>
-                                   <span>Rua</span>
-                              </div>
-                                   <input id="rua" type="text" name="rua"/>
-                               <div>
-                                    <span>Número</span>
-                               </div>
-                                    <input id="numero" type="text" name="numero"/>
-                               <div>
-                                      <span>Complemento</span>
-                               </div>
-                                       <input id="complemento" type="text" name="complemento"/>
-                               <div>
-                                        <span>Bairro</span>
-                               </div>
-                                        <input id="bairro" type="text" name="bairro"/>
-                               <div>
-                                        <span>CEP</span>
-                               </div>
-                                         <input id="cep" type="text" name="cep"/>
-                               <div>
-                                          <span>Cidade</span>
-                               </div>
-                                          <input id="cidade" type="text" name="cidade"/>
-
-                              <div>
-                                        <span>Unidade Federativa(UF)</span>
-                              </div>
-                                       <input id="uf" type="text" name="uf"/>
-
-                       </div>
-
-
-                       <div class="div-buttons">
-                           <button class="cadastro-contato-button" type="submit" value="cadastar"
-                           >Cadastar</button>
-                       </div>
-                </form>
-
+    <main>
+        <div class="main-div container">
+            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+            <hr>
+            <h2 class="center-text">Cadastrar contato</h2>
+            <form action="/cadastrarContato" method="post" accept-charset="UTF-8">
+                <div class="label-input-div">
+                    <span>Nome</span>
+                    <span id="nome-error"></span>
+                </div>
+                <input id="nome" type="text" name="nome" />
+                <div class="label-input-div">
+                    <span>RG</span>
+                    <span id="rg-error"></span>
+                </div>
+                <input id="rg" type="text" name="rg" />
+                <div class="label-input-div">
+                    <span>CPF</span>
+                    <span id="cpf-error"></span>
+                </div>
+                <input id="cpf" type="text" name="cpf" />
+                <div class="label-input-div">
+                    <span>Rua</span>
+                    <span id="rua-error"></span>
+                </div>
+                <input id="rua" type="text" name="rua"/>
+                <div class="label-input-div">
+                    <span>Número</span>
+                    <span id="email-error"></span>
+                </div>
+                <input id="numero" type="text" name="numero"/>
+                <div class="label-input-div">
+                    <span>Complemento</span>
+                    <span id="complemento-error"></span>
+                </div>
+                <input id="complemento" type="text" name="complemento"/>
+                <div class="label-input-div">
+                    <span>Bairro</span>
+                    <span id="bairro-error"></span>
+                </div>
+                <input id="bairro" type="text" name="bairro"/>
+                <div class="label-input-div">
+                    <span>CEP</span>
+                    <span id="cep-error"></span>
+                </div>
+                <input id="cep" class="entry" type="text" name="cep"/>
+                <div class="label-input-div">
+                    <span>Cidade</span>
+                    <span id="cidade-error"></span>
+                </div>
+                <input id="cidade" type="text" name="cidade"/>
+                <div class="label-input-div">
+                    <span>Unidade Federativa</span>
+                    <span id="unidadeFederativa-error"></span>
+                </div>
+                <input id="unidadeFederativa" type="text" name="unidadeFederativa"/>
+                <div class="div-buttons last-button">
+                    <button class="login-button" type="submit">Cadastrar</button>
+                    <button class="signup-button" type="button" onclick="previusPage()">Voltar</button>
+                </div>
+            </form>
+        </div>
     </main>
-        <script src="js/main.js"></script>
-        <script src="js/validation.js"></script>
-
-
-
+    <script src="js/main.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>
