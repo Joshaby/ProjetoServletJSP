@@ -44,29 +44,21 @@ public class ContatosServlet extends HttpServlet {
 
                     response.sendRedirect("/editcontato.jsp");
                 }
-                else {
-                    request.setAttribute("contato", contato);
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/errors/contatonotexists.jsp");
-                    requestDispatcher.forward(request, response);
-                }
-            }
-            else {
-                request.setAttribute("usuario", usuario);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/errors/usuarionotexists.jsp");
-                requestDispatcher.forward(request, response);
             }
         }
         else if(request.getRequestURI().equals("/contatos/del")){
             String emailLogado = (String) request.getSession().getAttribute("emailLog");
             Integer idContato = Integer.valueOf(request.getParameter("cId"));
 
-            UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
             Usuario usuario = usuarioRepository.findByEmail(emailLogado);
-            Optional<Contato> contato = usuario.getContatos().stream().filter(c -> c.getId().equals(idContato)).findFirst();
 
-            if (contato.isPresent()) {
-                usuario.removerContato(contato.get());
-                response.sendRedirect("/home");
+            if (Objects.nonNull(usuario)) {
+                Optional<Contato> contato = usuario.getContatos().stream().filter(c -> c.getId().equals(idContato)).findFirst();
+
+                if (contato.isPresent()) {
+                    usuario.removerContato(contato.get());
+                    response.sendRedirect("/home");
+                }
             }
         }
     }
@@ -78,22 +70,28 @@ public class ContatosServlet extends HttpServlet {
         if (request.getRequestURI().equals("/contatos/edit")) {
             String email = request.getSession().getAttribute("emailLog").toString();
             Integer cId = Integer.valueOf(request.getParameter("cId"));
-            Usuario usuario = usuarioRepository.findByEmail(email);
-            Contato contato = usuario.getContatos().stream().filter(c -> c.getId().equals(cId)).findFirst().get();
+
             String nome = request.getParameter("nome");
             Integer rg = Integer.valueOf(request.getParameter("rg"));
             Integer cpf = Integer.valueOf(request.getParameter("cpf"));
 
-            contato.setNome(nome);
-            contato.setRg(rg);
-            contato.setCpf(cpf);
+            Usuario usuario = usuarioRepository.findByEmail(email);
+            if (Objects.nonNull(usuario)) {
+                Optional<Contato> contato = usuario.getContatos().stream().filter(c -> c.getId().equals(cId)).findFirst();
 
-            HttpSession session = request.getSession();
-            session.setAttribute("nome", usuario.getNome());
-            session.setAttribute("contatos", usuario.getContatos());
-            session.setAttribute("emailLog", email);
+                if (contato.isPresent()) {
+                    contato.get().setNome(nome);
+                    contato.get().setRg(rg);
+                    contato.get().setCpf(cpf);
 
-            response.sendRedirect("/home");
+                    HttpSession session = request.getSession();
+                    session.setAttribute("nome", usuario.getNome());
+                    session.setAttribute("contatos", usuario.getContatos());
+                    session.setAttribute("emailLog", email);
+
+                    response.sendRedirect("/home");
+                }
+            }
         }
         else if (request.getRequestURI().equals("/contatos/new")) {
             String nome = request.getParameter("nome");
@@ -118,7 +116,6 @@ public class ContatosServlet extends HttpServlet {
                 Integer numeroInteger = Integer.valueOf(numero);
                 String emailLog = (String) request.getSession().getAttribute("emailLog");
 
-                UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
                 Usuario usuario = usuarioRepository.findByEmail(emailLog);
 
                 if (Objects.nonNull(usuario)) {
@@ -126,6 +123,7 @@ public class ContatosServlet extends HttpServlet {
                             UsuarioRepository.getEnderecoId(), rua, numeroInteger, complemento, bairro, cepInteger, cidade, uf);
                     Contato contato = new Contato(
                             UsuarioRepository.getContatoId(), nome, rgInteger, cpfInteger, endereco);
+
                     if (usuario.addContato(contato)) {
                         response.sendRedirect("/home");
                     }
