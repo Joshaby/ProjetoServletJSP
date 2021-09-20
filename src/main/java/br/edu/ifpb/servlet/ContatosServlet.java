@@ -40,7 +40,7 @@ public class ContatosServlet extends HttpServlet {
 
                 if (contato.isPresent()) {
                     HttpSession session = request.getSession();
-                    session.setAttribute("contato", contato);
+                    session.setAttribute("contato", contato.get());
 
                     response.sendRedirect("/editcontato.jsp");
                 }
