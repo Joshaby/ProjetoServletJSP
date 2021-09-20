@@ -53,7 +53,7 @@ public class EnderecosServlet extends HttpServlet {
                     request.setAttribute("nomeContato", contato.get().getNome());
                     request.setAttribute("enderecos", enderecos);
 
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/enderecos.jsp");
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/enderecos/page.jsp");
                     requestDispatcher.forward(request, response);
                 }
             }
@@ -75,7 +75,7 @@ public class EnderecosServlet extends HttpServlet {
                         HttpSession session = request.getSession();
                         session.setAttribute("endereco", endereco.get());
 
-                        response.sendRedirect("/editendereco.jsp");
+                        response.sendRedirect("/enderecos/edit.jsp");
                     }
                 }
             }

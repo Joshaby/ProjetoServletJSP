@@ -38,7 +38,7 @@ public class SignUpServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
             session.setAttribute("emailLog", email);
-            response.sendRedirect("/home.jsp");
+            response.sendRedirect("/page.jsp");
         }
         else {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/emailalreadyexists.jsp");

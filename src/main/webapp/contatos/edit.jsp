@@ -10,7 +10,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <title>Editar contato</title>
 </head>
 <body>
@@ -43,8 +43,8 @@
             </form>
         </div>
     </main>
-    <script src="js/main.js"></script>
-    <script src="js/validation.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/validation.js"></script>
 </body>
 </html>
 

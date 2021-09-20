@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
-@WebServlet(urlPatterns = {"/home", "/contatos/new", "/contatos/edit", "/contatos/form","/contatos/del"})
+@WebServlet(urlPatterns = {"/contatos", "/contatos/new", "/contatos/edit", "/contatos/form","/contatos/del"})
 public class ContatosServlet extends HttpServlet {
 
     private final UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
@@ -25,8 +25,8 @@ public class ContatosServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if (request.getRequestURI().equals("/home")) {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
+        if (request.getRequestURI().equals("/contatos")) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/contatos/page.jsp");
             requestDispatcher.forward(request, response);
         }
         else if (request.getRequestURI().equals("/contatos/form")) {
@@ -42,7 +42,7 @@ public class ContatosServlet extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("contato", contato.get());
 
-                    response.sendRedirect("/editcontato.jsp");
+                    response.sendRedirect("/contatos/edit.jsp");
                 }
             }
         }
@@ -57,7 +57,7 @@ public class ContatosServlet extends HttpServlet {
 
                 if (contato.isPresent()) {
                     usuario.removerContato(contato.get());
-                    response.sendRedirect("/home");
+                    response.sendRedirect("/contatos");
                 }
             }
         }
@@ -89,7 +89,7 @@ public class ContatosServlet extends HttpServlet {
                     session.setAttribute("contatos", usuario.getContatos());
                     session.setAttribute("emailLog", email);
 
-                    response.sendRedirect("/home");
+                    response.sendRedirect("/contatos");
                 }
             }
         }
@@ -125,7 +125,7 @@ public class ContatosServlet extends HttpServlet {
                             UsuarioRepository.getContatoId(), nome, rgInteger, cpfInteger, endereco);
 
                     if (usuario.addContato(contato)) {
-                        response.sendRedirect("/home");
+                        response.sendRedirect("/contatos");
                     }
                     else {
                         request.setAttribute("nome", contato.getNome());
