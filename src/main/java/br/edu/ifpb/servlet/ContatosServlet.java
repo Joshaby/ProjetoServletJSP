@@ -46,13 +46,13 @@ public class ContatosServlet extends HttpServlet {
                 }
                 else {
                     request.setAttribute("contato", contato);
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/contatonotexists.jsp");
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/errors/contatonotexists.jsp");
                     requestDispatcher.forward(request, response);
                 }
             }
             else {
                 request.setAttribute("usuario", usuario);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/usuarionotexists.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/errors/usuarionotexists.jsp");
                 requestDispatcher.forward(request, response);
             }
         }
@@ -108,7 +108,7 @@ public class ContatosServlet extends HttpServlet {
             String uf = request.getParameter("unidadeFederativa");
 
             if (cep.isBlank()|| rua.isBlank() || numero.isBlank() || bairro.isBlank() || cidade.isBlank() || uf.isBlank()) {
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/invalidaddress.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/errors/invalidaddress.jsp");
                 requestDispatcher.forward(request, response);
             }
             else {
@@ -131,7 +131,7 @@ public class ContatosServlet extends HttpServlet {
                     }
                     else {
                         request.setAttribute("nome", contato.getNome());
-                        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/contatoalreadyexists.jsp");
+                        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/errors/contatoalreadyexists.jsp");
                         requestDispatcher.forward(request, response);
                     }
                 }

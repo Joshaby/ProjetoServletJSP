@@ -22,15 +22,20 @@ public class SignUpServlet extends HttpServlet {
             HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
+
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
+
         UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
         Usuario usuario = usuarioRepository.findByEmail(email);
+
         if (!Objects.nonNull(usuario)) {
             usuarioRepository.add(nome, email, senha);
+
             request.setAttribute("nome", nome);
             request.setAttribute("contatos", new HashSet<>());
+
             HttpSession session = request.getSession();
             session.setAttribute("emailLog", email);
             response.sendRedirect("/home.jsp");

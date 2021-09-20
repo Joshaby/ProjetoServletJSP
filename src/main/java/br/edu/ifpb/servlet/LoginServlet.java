@@ -22,16 +22,19 @@ public class LoginServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
+
         HttpSession session = request.getSession();
-        System.out.println(email + ' ' + senha);
+
         UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
         Usuario usuario = usuarioRepository.findByEmail(email);
+
         RequestDispatcher requestDispatcher = null;
         if (Objects.nonNull(usuario)) {
             if (usuario.getSenha().equals(senha)) {
                 session.setAttribute("nome", usuario.getNome());
                 session.setAttribute("contatos", usuario.getContatos());
                 session.setAttribute("emailLog", email);
+
                 response.sendRedirect("/home");
             }
             else {
