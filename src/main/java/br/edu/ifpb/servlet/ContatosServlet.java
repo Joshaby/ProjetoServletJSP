@@ -20,7 +20,6 @@ public class ContatosServlet extends HttpServlet {
 
     private final UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
 
-    // /home e /contatos/edit
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,28 +31,30 @@ public class ContatosServlet extends HttpServlet {
         else if (request.getRequestURI().equals("/contatos/form")) {
             String email = request.getSession().getAttribute("emailLog").toString();
             Integer cId = Integer.valueOf(request.getParameter("cId"));
+
             Usuario usuario = usuarioRepository.findByEmail(email);
             Contato contato = usuario.getContatos().stream().filter(c -> c.getId().equals(cId)).findFirst().get();
+
             HttpSession session = request.getSession();
             session.setAttribute("contato", contato);
+
             response.sendRedirect("/editcontato.jsp");
         }
         else if(request.getRequestURI().equals("/contatos/del")){
-            System.out.println("entrou aqui");
             String emailLogado = (String) request.getSession().getAttribute("emailLog");
+            Integer idContato = Integer.valueOf(request.getParameter("cId"));
+
             UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
             Usuario usuario = usuarioRepository.findByEmail(emailLogado);
-            Integer idContato = Integer.valueOf(request.getParameter("cId"));
             Optional<Contato> contato = usuario.getContatos().stream().filter(c -> c.getId().equals(idContato)).findFirst();
+
             if (contato.isPresent()) {
-                System.out.println("entrou aqui2");
                 usuario.removerContato(contato.get());
                 response.sendRedirect("/home");
             }
         }
     }
 
-    // /contatos/form
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -66,13 +67,16 @@ public class ContatosServlet extends HttpServlet {
             String nome = request.getParameter("nome");
             Integer rg = Integer.valueOf(request.getParameter("rg"));
             Integer cpf = Integer.valueOf(request.getParameter("cpf"));
+
             contato.setNome(nome);
             contato.setRg(rg);
             contato.setCpf(cpf);
+
             HttpSession session = request.getSession();
             session.setAttribute("nome", usuario.getNome());
             session.setAttribute("contatos", usuario.getContatos());
             session.setAttribute("emailLog", email);
+
             response.sendRedirect("/home");
         }
         else if (request.getRequestURI().equals("/contatos/new")) {
@@ -86,10 +90,11 @@ public class ContatosServlet extends HttpServlet {
             String cep = request.getParameter("cep");
             String cidade = request.getParameter("cidade");
             String uf = request.getParameter("unidadeFederativa");
+
             if (cep.isBlank()|| rua.isBlank() || numero.isBlank() || bairro.isBlank() || cidade.isBlank() || uf.isBlank()) {
                 System.out.println("teste" );
-                RequestDispatcher rd = request.getRequestDispatcher("/invalidaddress.jsp");
-                rd.forward(request,response);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/invalidaddress.jsp");
+                requestDispatcher.forward(request, response);
             }
             else {
                 Integer rgInteger = Integer.valueOf(rg);
@@ -97,6 +102,7 @@ public class ContatosServlet extends HttpServlet {
                 Integer cepInteger = Integer.valueOf(cep);
                 Integer numeroInteger = Integer.valueOf(numero);
                 String emailLog = (String) request.getSession().getAttribute("emailLog");
+
                 UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
                 Endereco endereco = new Endereco(
                         UsuarioRepository.getEnderecoId(), rua, numeroInteger, complemento, bairro, cepInteger, cidade, uf);
@@ -104,31 +110,9 @@ public class ContatosServlet extends HttpServlet {
                         UsuarioRepository.getContatoId(), nome, rgInteger, cpfInteger, endereco);
                 Usuario u = usuarioRepository.findByEmail(emailLog);
                 u.addContato(contato);
-                u.getContatos().stream().forEach(System.out::println);
+
                 response.sendRedirect("/home");
             }
         }
     }
-
-//    @Override
-//    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-//
-//        if(request.getRequestURI().equals("/contatos/delete")){
-//            System.out.println("entrou aqui");
-//            String emailLogado = (String) request.getSession().getAttribute("emailLog");
-//            UsuarioRepository usuarioRepository = UsuarioRepository.getInstance();
-//            Usuario usuario = usuarioRepository.findByEmail(emailLogado);
-//
-//            Integer idContato = Integer.valueOf(request.getParameter("cId"));
-//            Optional<Contato> c = usuario.getContatos().stream().filter(contato -> contato.getId().equals(idContato)).findFirst();
-//
-//            if(c.isPresent()){
-//                System.out.println("entrou aqui");
-//                usuario.removerContato(c.get());
-//                response.sendRedirect("/home");
-//            }
-//
-//
-//        }
-//    }
 }
