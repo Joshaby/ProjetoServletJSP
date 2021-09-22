@@ -28,24 +28,26 @@
         </nav>
     </header>
     <main>
-        <div class="main-div container-address">
-            <div class="title-div">
-                <h2 class="title-address">Endereços de: ${nomeContato}</h2>
-                <a href="/enderecos/new.html"><button class="add-button">Adicionar</button></a>
-            </div>
-            <hr>
-            <c:forEach items="${enderecos}" var="endereco">
-                <div class="address-div">
-                    <p class="address-name">Rua: ${endereco.rua} - ${endereco.numero}</p>
-                    <div>
-                        <a href="/enderecos/form?eId=${endereco.id}"><button class="edit-button">Editar</button></a>
-                        <a href="/enderecos/del?eId=${endereco.id}"><button class="remove-button">Remover</button></a>
-                    </div>
+        <div class="main-div">
+            <div class="container-address">
+                <div class="title-div">
+                    <h2 class="title-address">Endereços de ${nomeContato}</h2>
+                    <a href="/enderecos/new.html"><button class="add-button">Adicionar</button></a>
                 </div>
-                <c:set var="qtde" scope="page" value="${qtde + 1}"/>
-            </c:forEach>
-            <hr>
-            <p class="end-text">Total de endereço: ${qtde}</p>
+                <hr>
+                <c:forEach items="${enderecos}" var="endereco">
+                    <div class="address-div">
+                        <p class="address-name">Rua: ${endereco.rua} - ${endereco.numero}</p>
+                        <div>
+                            <a href="/enderecos/form?eId=${endereco.id}"><button class="edit-button">Editar</button></a>
+                            <a href="/enderecos/del?eId=${endereco.id}"><button class="remove-button">Remover</button></a>
+                        </div>
+                    </div>
+                    <c:set var="qtde" scope="page" value="${qtde + 1}"/>
+                </c:forEach>
+                <hr>
+                <p class="end-text">Total de endereço: ${qtde}</p>
+            </div>
         </div>
     </main>
 </body>

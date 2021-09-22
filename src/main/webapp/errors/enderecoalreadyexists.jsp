@@ -15,13 +15,15 @@
     </head>
 <body>
     <main>
-        <div class="main-div container1">
-            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
-            <hr>
-            <p class="center-text">Endereço: Rua ${rua} - ${numero} já existe!</p>
-            <p class="center-text-end">Use outro endereço para o cadastro!</p>
-            <div class="div-buttons">
-                <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
+        <div class="main-div ">
+            <div class="container1">
+                <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+                <hr>
+                <p class="center-text">Endereço: Rua ${rua} - ${numero} já existe!</p>
+                <p class="center-text-end">Use outro endereço para o cadastro!</p>
+                <div class="div-buttons">
+                    <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
+                </div>
             </div>
         </div>
     </main>

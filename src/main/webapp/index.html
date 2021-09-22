@@ -7,28 +7,30 @@
 </head>
 <body>
     <main>
-        <div class="main-div container">
-            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
-            <hr>
-            <h2 class="center-text">Fazer login</h2>
-            <form action="/login" method="post" accept-charset="UTF-8">
-                <div class="label-input-div">
-                    <span>Email</span>
-                    <span id="email-error"></span>
-                </div>
-                <input id="email" type="email" name="email" oninput="validateEmail()" onblur="validateEmail()"/>
-                <div class="label-input-div">
-                    <span>Senha</span>
-                    <span id="password-error"></span>
-                </div>
-                <input id="senha" type="password" name="senha" oninput="validatePassword()" onblur="validatePassword()"/>
-                <p><a href="/forgot.jsp">Esqueceu sua senha?</a></p>
-                <p class="show-password">Mostrar senha <input class="checkbox" type="checkbox" onclick="changeVisibility()"></p>
-                <div class="div-buttons">
-                    <button class="login-button" type="submit">Entrar</button>
-                    <a href="/signup.html"><button class="signup-button" type="button">Resgistrar-se</button></a>
-                </div>
-            </form>
+        <div class="main-div">
+            <div class="container">
+                <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+                <hr>
+                <h2 class="center-text">Fazer login</h2>
+                <form action="/login" method="post" accept-charset="UTF-8">
+                    <div class="label-input-div">
+                        <span>Email</span>
+                        <span id="email-error"></span>
+                    </div>
+                    <input id="email" type="email" name="email" required oninput="validateEntries('email', 'email-error')" onblur="validateEntries('email', 'email-error')"/>
+                    <div class="label-input-div">
+                        <span>Senha</span>
+                        <span id="password-error"></span>
+                    </div>
+                    <input id="senha" type="password" name="senha" required oninput="validateEntries('senha', 'password-error')" onblur="validateEntries('senha', 'password-error')"/>
+                    <p><a href="/forgot.jsp">Esqueceu sua senha?</a></p>
+                    <p class="show-password">Mostrar senha <input class="checkbox" type="checkbox" onclick="changeVisibility()"></p>
+                    <div class="div-buttons">
+                        <button class="login-button" type="submit">Entrar</button>
+                        <a href="signup.html"><button class="signup-button" type="button">Resgistrar-se</button></a>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
     <script src="js/main.js"></script>

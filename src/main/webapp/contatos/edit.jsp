@@ -15,32 +15,34 @@
 </head>
 <body>
     <main>
-        <div class="main-div container">
-            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
-            <hr>
-            <h2 class="center-text">Editar contato</h2>
-            <form action="/contatos/edit?cId=${contato.id}" method="post" accept-charset="UTF-8">
-                <div class="label-input-div">
-                    <span>Nome</span>
-                    <span id="nome-error"></span>
-                </div>
-                <input id="nome" type="text" name="nome" value="${contato.nome}"/>
-                <div class="label-input-div">
-                    <span>RG</span>
-                    <span id="rg-error"></span>
-                </div>
-                <input id="rg" type="text" name="rg" value="${contato.rg}"/>
-                <div class="label-input-div">
-                  <span>CPF</span>
-                  <span id="cpf-error"></span>
-                </div>
-                <input id="cpf" type="text" name="cpf" value="${contato.cpf}"/>
-                </p>
-                <div class="div-buttons last-button">
-                    <button class="login-button" type="submit">Salvar</button>
-                    <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
-                </div>
-            </form>
+        <div class="main-div" >
+            <div class="container">
+                <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+                <hr>
+                <h2 class="center-text">Editar contato</h2>
+                <form action="/contatos/edit?cId=${contato.id}" method="post" accept-charset="UTF-8">
+                    <div class="label-input-div">
+                        <span>Nome</span>
+                        <span id="nome-error"></span>
+                    </div>
+                    <input id="nome" type="text" name="nome" value="${contato.nome}"/>
+                    <div class="label-input-div">
+                        <span>RG</span>
+                        <span id="rg-error"></span>
+                    </div>
+                    <input id="rg" type="text" name="rg" value="${contato.rg}"/>
+                    <div class="label-input-div">
+                        <span>CPF</span>
+                        <span id="cpf-error"></span>
+                    </div>
+                    <input id="cpf" type="text" name="cpf" value="${contato.cpf}"/>
+                    </p>
+                    <div class="div-buttons last-button">
+                        <button class="login-button" type="submit">Salvar</button>
+                        <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
     <script src="../js/main.js"></script>

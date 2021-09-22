@@ -28,26 +28,27 @@
         </nav>
     </header>
     <main>
-        <div class="main-div container-contacts">
-            <div class="title-div">
-                <h2 class="title-contacts">Contatos</h2>
-                <a href="/contatos/new.html"><button class="add-button">Adicionar</button></a>
-            </div>
-            <hr>
-            <c:forEach items="${contatos}" var="contato">
-                <div class="contacts-div">
-                    <p class="contact-name">${contato.nome}</p>
-                    <div>
-                        <a href="/contatos/form?cId=${contato.id}"><button class="edit-button">Editar</button></a>
-                        <a href="/enderecos?cId=${contato.id}"><button class="show-button">Ver</button></a>
-                        <a href="/contatos/del?cId=${contato.id}"><button class="remove-button">Remover</button></a>
-                    </div>
+        <div class="main-div">
+            <div class="container-contacts">
+                <div class="title-div">
+                    <h2 class="title-contacts">Contatos</h2>
+                    <a href="/contatos/new.html"><button class="add-button">Adicionar</button></a>
                 </div>
-                <c:set var="qtde" scope="page" value="${qtde + 1}"/>
-            </c:forEach>
-
-            <hr>
-            <p class="end-text">Total de contatos: ${qtde}</p>
+                <hr>
+                <c:forEach items="${contatos}" var="contato">
+                    <div class="contacts-div">
+                        <p class="contact-name">${contato.nome}</p>
+                        <div>
+                            <a href="/contatos/form?cId=${contato.id}"><button class="edit-button">Editar</button></a>
+                            <a href="/enderecos?cId=${contato.id}"><button class="show-button">Ver</button></a>
+                            <a href="/contatos/del?cId=${contato.id}"><button class="remove-button">Remover</button></a>
+                        </div>
+                    </div>
+                    <c:set var="qtde" scope="page" value="${qtde + 1}"/>
+                </c:forEach>
+                <hr>
+                <p class="end-text">Total de contatos: ${qtde}</p>
+            </div>
         </div>
     </main>
 </body>

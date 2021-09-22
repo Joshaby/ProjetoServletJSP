@@ -7,32 +7,34 @@
 </head>
 <body>
     <main>
-        <div class="main-div container">
-            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
-            <hr>
-            <h2>Registro de novo usuário</h2>
-            <form action="/signup" method="post" accept-charset="UTF-8">
-                <div class="nome-div">
-                    <span>Nome</span>
-                    <span id="username-error"></span>
-                </div>
-                <input id="nome" class="entry" type="text" name="nome" oninput="validateUserName()" onblur="validateUserName()"/>
-                <div class="email-div">
-                    <span>Email</span>
-                    <span id="email-error"></span>
-                </div>
-                <input id="email" class="entry" type="email" name="email" oninput="validateEmail()" onblur="validateEmail()"/>
-                <div class="password-div">
-                    <span>Senha</span>
-                    <span id="password-error"></span>
-                </div>
-                <input id="senha" class="entry" type="password" name="senha" oninput="validatePassword()" onblur="validatePassword()"/>
-                <p class="show-password">Mostrar senha <input class="checkbox" type="checkbox" onclick="changeVisibility()"></p>
-                <div class="div-buttons">
-                    <button class="login-button" type="submit">Entrar</button>
-                    <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
-                </div>
-            </form>
+        <div class="main-div">
+            <div class="container">
+                <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+                <hr>
+                <h2 class="center-text">Fazer login</h2>
+                <form action="/signup" method="post" accept-charset="UTF-8">
+                    <div class="label-input-div">
+                        <span>Nome</span>
+                        <span id="username-error"></span>
+                    </div>
+                    <input id="nome" class="entry" type="text" name="nome" required oninput="validateEntries('nome', 'username-error')" onblur="validateEntries('nome', 'username-error')"/>
+                    <div class="label-input-div">
+                        <span>Email</span>
+                        <span id="email-error"></span>
+                    </div>
+                    <input id="email" type="email" name="email" required oninput="validateEntries('email', 'email-error')" onblur="validateEntries('email', 'email-error')"/>
+                    <div class="label-input-div">
+                        <span>Senha</span>
+                        <span id="password-error"></span>
+                    </div>
+                    <input id="senha" type="password" name="senha" required oninput="validateEntries('senha', 'password-error')" onblur="validateEntries('senha', 'password-error')"/>
+                    <p class="show-password">Mostrar senha <input class="checkbox" type="checkbox" onclick="changeVisibility()"></p>
+                    <div class="div-buttons">
+                        <button class="login-button" type="submit">Entrar</button>
+                        <a href="index.html"><button class="signup-button" type="button">Voltar</button></a>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
     <script src="js/main.js"></script>

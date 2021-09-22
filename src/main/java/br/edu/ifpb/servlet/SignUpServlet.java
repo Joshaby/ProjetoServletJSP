@@ -33,15 +33,15 @@ public class SignUpServlet extends HttpServlet {
         if (!Objects.nonNull(usuario)) {
             usuarioRepository.add(nome, email, senha);
 
-            request.setAttribute("nome", nome);
-            request.setAttribute("contatos", new HashSet<>());
-
             HttpSession session = request.getSession();
+            session.setAttribute("nome", nome);
+            session.setAttribute("contatos", new HashSet<>());
             session.setAttribute("emailLog", email);
-            response.sendRedirect("/page.jsp");
+
+            response.sendRedirect("/contatos");
         }
         else {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/emailalreadyexists.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/errors/emailalreadyexists.jsp");
             requestDispatcher.forward(request, response);
         }
     }

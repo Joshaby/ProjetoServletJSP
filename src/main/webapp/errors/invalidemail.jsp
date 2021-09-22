@@ -15,14 +15,16 @@
 </head>
 <body>
     <main>
-        <div class="main-div container1">
-            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
-            <hr>
-            <p class="center-text">Email: ${email} não encontrado!</p>
-            <p class="center-text-end">Se cadastre no sistema para continuar!</p>
-            <div class="div-buttons">
-                <button class="login-button">Resgistrar-se</button>
-                <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
+        <div class="main-div">
+            <div class="container1">
+                <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+                <hr>
+                <p class="center-text">Email: ${email} não encontrado!</p>
+                <p class="center-text-end">Se cadastre no sistema para continuar!</p>
+                <div class="div-buttons">
+                    <a href="../signup.html"><button class="login-button">Resgistrar-se</button></a>
+                    <button class="return-button" type="button" onclick="previusPage()">Voltar</button>
+                </div>
             </div>
         </div>
     </main>

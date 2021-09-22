@@ -1,20 +1,6 @@
-function validatePassword() {
-    const password = document.getElementById("senha");
-    const error = document.getElementById("password-error");
-    if (password.value.length == 0) error.innerHTML = "Campo obrigatório";
-    else error.innerHTML = "";
-}
-
-function validateEmail() {
-    const password = document.getElementById("email");
-    const error = document.getElementById("email-error");
-    if (password.value.length == 0) error.innerHTML = "Campo obrigatório";
-    else error.innerHTML = "";
-}
-
-function validateUserName() {
-    const password = document.getElementById("nome");
-    const error = document.getElementById("username-error");
-    if (password.value.length == 0) error.innerHTML = "Campo obrigatório";
+function validateEntries(name, id) {
+    const element = document.getElementById(name);
+    const error = document.getElementById(id);
+    if (element.value.length == 0) error.innerHTML = "Campo obrigatório";
     else error.innerHTML = "";
 }

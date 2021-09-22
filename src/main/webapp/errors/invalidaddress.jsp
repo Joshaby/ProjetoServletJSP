@@ -13,10 +13,12 @@
     <title>Endereço vazio</title>
 <body>
     <main>
-        <div class="main-div container1">
-            <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
-            <hr>
-            <p class="center-text">Você deve inserir um endereço para efetuar o cadastro do contato com sucesso.</p>
+        <div class="main-div">
+            <div class="container1">
+                <h1 class="center-text">Sistema de cadastro de contatos - SCC</h1>
+                <hr>
+                <p class="center-text">Você deve inserir um endereço para efetuar o cadastro do contato com sucesso.</p>
+            </div>
         </div>
     </main>
     <script src="../js/main.js"></script>

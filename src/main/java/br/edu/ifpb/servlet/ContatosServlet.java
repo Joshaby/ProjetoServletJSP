@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 @WebServlet(urlPatterns = {"/contatos", "/contatos/new", "/contatos/edit", "/contatos/form","/contatos/del"})
 public class ContatosServlet extends HttpServlet {
@@ -125,6 +126,11 @@ public class ContatosServlet extends HttpServlet {
                             UsuarioRepository.getContatoId(), nome, rgInteger, cpfInteger, endereco);
 
                     if (usuario.addContato(contato)) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("nome", usuario.getNome());
+                        session.setAttribute("contatos", usuario.getContatos());
+                        session.setAttribute("emailLog", emailLog);
+
                         response.sendRedirect("/contatos");
                     }
                     else {
