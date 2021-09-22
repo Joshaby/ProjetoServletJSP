@@ -3,13 +3,15 @@ package br.edu.ifpb.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Getter
 @Setter
-public class Contato {
+public class Contato implements Serializable {
+    private static long serialVersionUID = 1L;
 
     private Integer id;
     private String nome;
