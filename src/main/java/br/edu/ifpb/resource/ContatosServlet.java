@@ -1,4 +1,4 @@
-package br.edu.ifpb.servlet;
+package br.edu.ifpb.resource;
 
 import br.edu.ifpb.domain.Contato;
 import br.edu.ifpb.domain.Endereco;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 @WebServlet(urlPatterns = {"/contatos", "/contatos/new", "/contatos/edit", "/contatos/form","/contatos/del"})
 public class ContatosServlet extends HttpServlet {

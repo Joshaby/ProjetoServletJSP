@@ -110,7 +110,7 @@ a, a:visited {
 }
 
 .container, .container1, .container-contacts, .container-address  {
-    margin: 100px 0px;
+    margin: 120px 0px;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border-color);
@@ -189,7 +189,7 @@ a, a:visited {
 
 .title-contacts, .title-address {
     font-size: 25px;
-    margin-right: 50px;
+    margin-right: 70px;
     font-weight: bold;
 }
 

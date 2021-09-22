@@ -22,7 +22,7 @@
                 <h1>Sistema de cadastro de contatos - SCC</h1>
                 <div>
                     <span class="username">Usuário: ${nomeUsuario}</span>
-                    <button class="exit-button">Sair</button>
+                    <a href="/logout"><button class="exit-button">Sair</button></a>
                 </div>
             </div>
         </nav>

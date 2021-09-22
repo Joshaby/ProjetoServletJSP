@@ -1,4 +1,4 @@
-package br.edu.ifpb.servlet;
+package br.edu.ifpb.resource;
 
 import br.edu.ifpb.domain.Contato;
 import br.edu.ifpb.domain.Endereco;
